@@ -1,6 +1,6 @@
 // import React from "react";
 
-import { Search, Option, Detail } from "@searchpal/dev";
+import { Search, Option, Detail } from "@searchpal/build";
 import { users } from "./constants/users";
 
 // import { TestComponent } from "./components/TestComponent";
@@ -11,14 +11,12 @@ import { users } from "./constants/users";
 function App() {
   return (
     <div>
-      <Search
-        open={true}
-        onClose={() => {}}
-        link={({ href, children }) => <a href={"#"}>{children}</a>}
-      >
+      <Search open={true} onClose={() => {}}>
         {users.map((user) => (
           <Option
             label={user.name}
+            // @ts-ignore
+            // label={20000}
             sublabel={user.email}
             key={user.id}
             img={{ src: user.avatar }}
@@ -28,7 +26,6 @@ function App() {
                 user.organizations && user.organizations.map((org) => org.name)
               )
             }
-            href={`#`}
           >
             <Detail label="Joined" value={user.joined} />
             {user.organizations && (

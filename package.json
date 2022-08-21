@@ -34,7 +34,8 @@
   },
   "scripts": {
     "dev": "npm start -w demo",
-    "build": "npm run build -w lib"
+    "build": "npm run build -w lib",
+    "rebuild": "npm run watch -w lib"
   },
   "workspaces": [
     "lib",

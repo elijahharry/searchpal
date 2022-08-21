@@ -30,8 +30,8 @@ export const Error = () => {
           fill="currentColor"
           strokeWidth={0}
           viewBox="0 0 24 24"
-          height="1.5rem"
-          width="1.5rem"
+          height={24}
+          width={24}
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
