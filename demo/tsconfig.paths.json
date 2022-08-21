@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@searchpal/dev": ["../lib/index"],
+      "@searchpal/build": ["../lib"]
+    }
+  }
+}
