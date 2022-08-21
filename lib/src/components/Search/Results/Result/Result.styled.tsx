@@ -10,6 +10,9 @@ export const Li = styled.li<{ active: boolean }>`
   border-radius: 0.5rem;
   ${(props) =>
     props.active && { backgroundColor: "var(--spotlight-selected-option)" }}
+  & a {
+    text-decoration: none;
+  }
 `;
 
 export const Details = styled.div<{ clickable: boolean }>`
@@ -19,6 +22,7 @@ export const Details = styled.div<{ clickable: boolean }>`
   padding-right: 0.75rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  text-decoration: none;
   ${(props) => props.clickable && { cursor: "pointer" }}
 `;
 

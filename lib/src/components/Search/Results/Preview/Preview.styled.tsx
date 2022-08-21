@@ -52,6 +52,9 @@ export const Divider = styled.hr`
 
 export const Buttom = styled.div`
   padding: var(--spotlight-preview-pad);
+  & a {
+    text-decoration: none;
+  }
 `;
 
 export const DetailTitle = styled.dt`

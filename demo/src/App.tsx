@@ -11,7 +11,11 @@ import { users } from "./constants/users";
 function App() {
   return (
     <div>
-      <Search open={true} onClose={() => {}}>
+      <Search
+        open={true}
+        onClose={() => {}}
+        link={({ href, children }) => <a href={"#"}>{children}</a>}
+      >
         {users.map((user) => (
           <Option
             label={user.name}
@@ -24,6 +28,7 @@ function App() {
                 user.organizations && user.organizations.map((org) => org.name)
               )
             }
+            href={`#`}
           >
             <Detail label="Joined" value={user.joined} />
             {user.organizations && (
