@@ -15,7 +15,7 @@
 <div dir='auto' align='center'>
 <table>
 <tr>
-<td><a style='font-weight: 500' href='#option'>Installation</a></td>
+<td><a style='font-weight: 500' href='#getting-started'>Installation</a></td>
 <td><a style='font-weight: 500' href='#basic-usage'>Usage</a></td>
 <td><a style='font-weight: 500' href='#components'>Components</a></td>
 </tr>

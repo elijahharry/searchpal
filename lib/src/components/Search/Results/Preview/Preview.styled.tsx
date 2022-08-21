@@ -7,17 +7,23 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: space-between;
   --spotlight-preview-pad: 1rem;
+  min-height: 100%;
   ${getBorder("left")}
 `;
 export const Top = styled.div`
+  width: auto;
+  flex-grow: 1.1;
   padding: var(--spotlight-preview-pad);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   ${getBorder("bottom")}
 `;
 export const Details = styled.div<{ scrollable: boolean }>`
   max-height: 400px;
   display: flex;
-  flex: 1 1 auto;
-  flex-grow: 1;
+  /* flex: 1 1 auto; */
+  /* flex-grow: 1; */
   flex-direction: column;
   justify-content: space-between;
   overflow-y: auto;
@@ -31,6 +37,8 @@ export const DetailList = styled.dl`
   column-gap: 0.75rem;
   row-gap: 0.5rem;
   padding: var(--spotlight-preview-pad);
+  padding-bottom: calc(var(--spotlight-preview-pad) / 2);
+  /* padding-bottom: 0; */
   font-size: 0.875rem;
   line-height: 1.25rem;
   margin: 0px;
@@ -45,12 +53,12 @@ export const DetailList = styled.dl`
 
 export const Divider = styled.hr`
   visibility: hidden;
-  flex-grow: 1;
+  /* flex-grow: 1; */
   border-style: none;
   opacity: 0;
 `;
 
-export const Buttom = styled.div`
+export const Bottom = styled.div`
   padding: var(--spotlight-preview-pad);
   & a {
     text-decoration: none;

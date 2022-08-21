@@ -1,6 +1,6 @@
 {
   "name": "searchpal",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Search 'palette' component for React, inspired by MacOS Spotlight Search. Good-lookin' & customizable. Autocomplete, search previews & more. Set to find exact and/or fuzzy matches.",
   "main": "lib/dist/cjs/index.js",
   "module": "lib/dist/esm/index.js",

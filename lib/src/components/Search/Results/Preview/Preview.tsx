@@ -2,14 +2,7 @@ import { Searchable } from "../../../../../types";
 // import { useSearch } from "../../../../context";
 import React, { isValidElement, useMemo } from "react";
 import { Link } from "../../Link";
-import {
-  Buttom,
-  Container,
-  Divider,
-  Top,
-  Details,
-  DetailList,
-} from "./Preview.styled";
+import { Bottom, Container, Top, Details, DetailList } from "./Preview.styled";
 import { useRect } from "../../../../hooks";
 import { Detail } from "../../../Detail";
 import { Button } from "./Button";
@@ -71,18 +64,15 @@ export const Preview = ({
         )}
       </Top>
       {details && details.length > 0 && (
-        <>
-          <Details scrollable={detailsScrollable}>
-            <DetailList ref={detailsRef}>
-              {details.map((detail, i) => (
-                <Detail {...detail} key={i.toString()} />
-              ))}
-            </DetailList>
-          </Details>
-          <Divider aria-hidden />
-        </>
+        <Details scrollable={detailsScrollable}>
+          <DetailList ref={detailsRef}>
+            {details.map((detail, i) => (
+              <Detail {...detail} key={i.toString()} />
+            ))}
+          </DetailList>
+        </Details>
       )}
-      <Buttom>
+      <Bottom>
         <Link href={href}>
           {CustomButton ? (
             isFunction(CustomButton) ? (
@@ -97,7 +87,7 @@ export const Preview = ({
             <Button onClick={(e) => isFunction(onClick) && onClick(e)} />
           )}
         </Link>
-      </Buttom>
+      </Bottom>
     </Container>
   );
 };

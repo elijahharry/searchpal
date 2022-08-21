@@ -1,6 +1,7 @@
 // import React from "react";
 
 import { Search, Option, Detail } from "@searchpal/build";
+import { useState } from "react";
 import { users } from "./constants/users";
 
 // import { TestComponent } from "./components/TestComponent";
@@ -9,9 +10,11 @@ import { users } from "./constants/users";
 // import { PreviewcdSpotlight } from "./components/Samples/PreviewSpotlight";
 
 function App() {
+  const [open, setOpen] = useState(true);
+
   return (
     <div>
-      <Search open={true} onClose={() => {}}>
+      <Search open={open} onClose={() => setOpen(false)} startExpanded>
         {users.map((user) => (
           <Option
             label={user.name}
