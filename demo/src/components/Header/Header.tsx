@@ -1,8 +1,9 @@
 import Head from "next/head";
 import { Image } from "../Image";
 import { IoIosArrowForward } from "react-icons/io";
+import { Analytics } from "./Analytics";
 
-const Header = () => {
+const Header = ({ version }: { version: string }) => {
   return (
     <>
       <Head>
@@ -12,6 +13,7 @@ const Header = () => {
           content="Search 'palette' component for React, inspired by MacOS Spotlight Search. Good-lookin' & customizable. Autocomplete, search previews & more. Set to find exact and/or fuzzy matches."
         />
       </Head>
+      <Analytics />
       <header className="overflow-hidden relative bg-blue-400/5 bg-gradient-to-br from-blue-300/5 to-blue-300/20 w-full">
         <div className="ctn py-24 flex-col md:flex-row items-center flex justify-between space-y-4 md:space-y-0 md:space-x-6">
           <div className="col-span-4 max-w-2xl text-center md:text-left space-y-5">
@@ -24,7 +26,7 @@ const Header = () => {
                 npm
               </span>
               <span className="inline-flex items-center">
-                Latest version 1.0.7{" "}
+                Latest version {version}{" "}
                 <IoIosArrowForward aria-hidden size={13} className="ml-2" />
               </span>
             </a>
