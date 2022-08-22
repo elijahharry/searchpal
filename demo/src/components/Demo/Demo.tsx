@@ -32,7 +32,7 @@ export const Demo = ({
     <>
       <section
         id={`demo-${id}`}
-        className="py-12 ctn border-t first:border-t-0"
+        className="py-12 ctn border-t first:border-t-0 dark:border-gray-700"
       >
         <div
           className={[
