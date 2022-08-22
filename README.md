@@ -57,7 +57,7 @@ npm i searchpal
 Then you can import the components & types within your React application:
 
 ```tsx
-import { Search, Option, Detail } from "search-pal";
+import { Search, Option, Detail } from "searchpal";
 ```
 
 ### Peer Dependencies
@@ -72,7 +72,7 @@ Alongside `react` and `react-dom`, the only other peer dependency is `styled-com
 
 ## Basic Usage
 
-Simply import the Search & Option components. Add a few required props to the Search: `open` and `onClose`. Map out your options as children, each option only requiring a `label`. Provide each option with some `keywords` via an array of strings or an inline function which you can use to access a [keyword filterer & interpreter](#keyword-interpreter)
+Simply import the Search & Option components. Add a few required props to the Search: `open` and `onClose`. Map out your options as children, each option only requiring a `label`. Provide each option with some `keywords` utilizing a built-in [keyword filterer & interpreter](#keyword-interpreter):
 
 ```tsx
 import { Search, Option, Detail } from "searchpal";
@@ -168,11 +168,11 @@ The `Search` component has tons of props, all offering unique customizations. Th
 
 Search comes with two seperate search algorithms (and one combination of the two). You can decide whichever one best suits your use case. See how the seperate algorithms work:
 
-| Algorithm | <div style='width:200px;max-width:40vw'>Demo</div>          | Description                                                                                                                                                                                                                                                                                                                                                |
-| --------- | ----------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `exact`   | ![](https://searchpal.s3.us-east-2.amazonaws.com/exact.gif) | Exclusively searches for **exact** occurances of shared words between the query/keywords and ranks based on number of occurances.                                                                                                                                                                                                                          |
-| `fuzz`    | ![](https://searchpal.s3.us-east-2.amazonaws.com/fuzz.gif)  | 'Fuzzy' search chunks will split each keyword into seperate, smaller chunks and individually compare them to the query, then compares scores between the options (only showing options within a score within close enough range of the option with the highest score). Essentially, users don't need to type everything perfectly to see relevant results. |
-| `combo`   | ![](https://searchpal.s3.us-east-2.amazonaws.com/combo.gif) | Combo initially performs an `exact` search, and in the event there are no matches, runs a `fuzz` search. Solid mix of both algos, which is why this is the **default search algorithm**.                                                                                                                                                                   |
+| Algorithm | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Demo &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | Description                                                                                                                                                                                                                                                                                                                                                |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `exact`   | ![](https://searchpal.s3.us-east-2.amazonaws.com/exact.gif)                                                                                      | Exclusively searches for **exact** occurances of shared words between the query/keywords and ranks based on number of occurances.                                                                                                                                                                                                                          |
+| `fuzz`    | ![](https://searchpal.s3.us-east-2.amazonaws.com/fuzz.gif)                                                                                       | 'Fuzzy' search chunks will split each keyword into seperate, smaller chunks and individually compare them to the query, then compares scores between the options (only showing options within a score within close enough range of the option with the highest score). Essentially, users don't need to type everything perfectly to see relevant results. |
+| `combo`   | ![](https://searchpal.s3.us-east-2.amazonaws.com/combo.gif)                                                                                      | Combo initially performs an `exact` search, and in the event there are no matches, runs a `fuzz` search. Solid mix of both algos, which is why this is the **default search algorithm**.                                                                                                                                                                   |
 
 ### Color Palette
 

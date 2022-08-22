@@ -1,6 +1,6 @@
 // import React from "react";
 
-import { Search, Option, Detail } from "@searchpal/dev";
+import { Search, Option, Detail } from "@searchpal/build";
 import { useState } from "react";
 import { users } from "./constants/users";
 
