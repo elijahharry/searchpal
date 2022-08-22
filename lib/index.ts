@@ -1,6 +1,8 @@
 export type {
   SearchProps,
+  OptionProps,
   SearchLabels,
+  SearchPalette,
   DetailProps,
   ArrowComponent,
   ArrowProps,
