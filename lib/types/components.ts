@@ -1,5 +1,5 @@
 import { FunctionComponent, PropsWithChildren, ReactElement } from "react";
-import { OptionProps } from "./gen";
+import { OptionProps, Renderable } from "./gen";
 
 export type LinkProps = PropsWithChildren<{
   href: string;
@@ -26,5 +26,7 @@ export type PreviewProps = Pick<OptionProps, "label" | "sublabel" | "img"> & {
 };
 export type PreviewComponent = FunctionComponent<PreviewProps>;
 
-export type ButtonProps = Pick<OptionProps, "onClick" | "label">;
-export type ButtomComponent = FunctionComponent<ButtonProps>;
+export type ButtonProps = Pick<OptionProps, "onClick" | "label"> & {
+  cta: Renderable;
+};
+export type ButtonComponent = FunctionComponent<ButtonProps>;

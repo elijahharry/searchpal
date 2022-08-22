@@ -56,8 +56,8 @@ npm i searchpal
 
 Then you can import the components & types within your React application:
 
-```
-import { Search, Option, Detail } from 'search-pal'
+```tsx
+import { Search, Option, Detail } from "search-pal";
 ```
 
 ### Peer Dependencies
@@ -129,12 +129,12 @@ const UsersSearch = ({ users, session }) => {
 
 # Components
 
-Comes with three seperate components which can be used in combination to build out your spotlight.
+Comes with three seperate components which can be used in combination to build out your search palette.
 
 | [Search](#search) | [Option](#option) | [Detail](#detail) |
 | ----------------- | ----------------- | ----------------- |
 
-<!-- | [Search](#search)&nbsp;&nbsp; | &nbsp;&nbsp;[Option](#option) | -->
+<!-- | [Search](#search)   |   [Option](#option) | -->
 
 ## Search
 
@@ -152,8 +152,8 @@ The `Search` component has tons of props, all offering unique customizations. Th
 
 | Prop                | Accepts                                                                                            | Default                                  | Description                                                                                                                                                                        |
 | ------------------- | -------------------------------------------------------------------------------------------------- | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **`open`**\*        | `boolean`                                                                                          |                                          | Is the spotlight modal opened or closed?                                                                                                                                           |
-| **`onClose`**\*     | `() => void`                                                                                       |                                          | Function that flips the `open` prop to `false` when a user closes the spotlight modal.                                                                                             |
+| **`open`**\*        | `boolean`                                                                                          |                                          | Open/close state of the search modal. Pass through `true` to open, `false` to close.                                                                                               |
+| **`onClose`**\*     | `() => void`                                                                                       |                                          | Function that flips the `open` prop to `false` when a user closes the search modal.                                                                                                |
 | `label`             | `string`                                                                                           | `"Search for anything..."`               | Label which displays as the search input's placeholder. Also utilized as an input label (only visible to screen readers).                                                          |
 | `algo`              | `'fuzz'`, `'exact'` or `'combo'`<br /><sub>[What are these?](#search-algorithms)</sub>             | `'combo'`                                | Select the search algorithm used to narrow results. [Learn more about these algorithms.](#search-algorithms)                                                                       |
 | `dark`              | `true`, `false` or `'user'`<br /><sub>See [example](#no-dynamic-light--dark--static-palette)</sub> | `'user'`                                 | Enforce a specific light / dark mode, or base it on user preference.                                                                                                               |
@@ -309,17 +309,40 @@ Customize aria-labels only visible to screen readers and other text content with
 
 Use if you'd like to wrap options/buttons with anchors (`<a>`) in the event that the `Option` was provided with an `href`. As an alternative, you could add an `onClick` to any `Option` and include your routing within it.
 
+![](https://searchpal.s3.us-east-2.amazonaws.com/custom-link.gif)
+
+#### Link Example
+
+The `href` will always be a string (if there is no url, your `Link` component won't even be called). Make sure to render `children`!
+
+```tsx
+import Search, { LinkComponent } from "searchpal";
+import Link from "next/link";
+
+const Anchor: LinkComponent = ({ href, children }) => {
+  return (
+    <Link href={href} passHref>
+      <a>{children}</a>
+    </Link>
+  );
+};
+
+const SearchLinked = () => {
+  return <Search {...props} link={Anchor} />;
+};
+```
+
 <!-- ##### [Details](#link-details)   |   [Example](#link-example)   |   [Types](#link-types) -->
 
-<table>
+<!--
+| Link Demo                                                         |
+| ----------------------------------------------------------------- |
+| ![](https://searchpal.s3.us-east-2.amazonaws.com/custom-link.gif) | -->
+
+<!-- <table>
 <tr>
 <th>
 Link Example
-</th>
-<th>
-
-Link Demo
-
 </th>
 </tr>
 <tr>
@@ -343,15 +366,9 @@ const SearchLinked = () => {
 ```
 
 </td>
-<td>
 
-<img src='https://searchpal.s3.us-east-2.amazonaws.com/custom-link.gif' width='420' />
-
-<!-- ![](https://searchpal.s3.us-east-2.amazonaws.com/custom-link.gif) -->
-
-</td>
 </tr>
-</table>
+</table> -->
 
 #### Link Types
 
@@ -388,6 +405,8 @@ An `Option`'s props have some caveats, along with a few features to make things 
 | `img`         | `{ src: string; alt?: string }`                                                                       | Pass through an image associated with the option, as an object with a `src` and optional `alt`. By default, it's displayed in search results and preview panels. <br /><sub>**Note**: Without an `alt`, images become invisible to screen readers by default.</sub>                                                                                                                                                                                                                                           |
 | `onClick`     | `(e: MouseEvent<HTMLButtonElement>) => void`                                                          | Pass through a function which will run when the `Option` receives one of the following events: <ul><li>`Option` is clicked in the results menu</li><li>Button inside `Option`'s preview panel is clicked</li><li>User presses `Enter` while the `Option` is highlighted in search results</li></ul>                                                                                                                                                                                                           |
 | `href`        | `string`                                                                                              | Add a direct link to an option in search results and the button in its preview panel. The `href` prop is **only utilized** if you've provided the parent `Search` with a [custom Link](#link).<br /><sub>If you've provided an `href` and a [Link](#link), and the user has the `Option` highlighted in search results, they will also be redirected on `Enter`.</sub>                                                                                                                                        |
+| `cta`         | [Renderable](#what-is-renderable)                                                                     | Label for button used in the option's preview panel. Default is `'Select'`.                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| `previewless` | `boolean`                                                                                             | Turn off the preview panel for an `Option`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | `media`       | [Renderable](#what-is-renderable) or [MediaComponent](#media)                                         | Fills in the image/avatar frames on search results and in `Option` preview panels.                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | `arrow`       | [Renderable](#what-is-renderable) or [ArrowComponent](#arrow)                                         | Replaces the little arrow icon on each option in search results.                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | `preview`     | [Renderable](#what-is-renderable) or [PreviewComponent](#preview)                                     | Fully replaces the top section of the preview panel.                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
@@ -478,9 +497,6 @@ The `media` prop accepts a simple [Renderable](#what-is-renderable) object or a 
 <th>
 Renderable Object
 </th>
-<th>
-Custom Media Component
-</th>
 </tr>
 <tr>
 <td>
@@ -494,6 +510,16 @@ users.map((user) => (
 ```
 
 </td>
+</tr>
+</table>
+
+<table>
+<tr>
+<th>
+Custom Media Component
+</th>
+</tr>
+<tr>
 <td>
 
 ```tsx
@@ -546,15 +572,12 @@ Replace the arrow which appears on each option in search results.
 
 #### Arrow Examples
 
-The `arrow` prop accepts a simple Renderable object or a custom component constructor.
+The `arrow` prop accepts a simple [Renderable](#what-is-renderable) object or a custom component constructor.
 
 <table>
 <tr>
 <th>
 Renderable Object
-</th>
-<th>
-Custom Arrow Component
 </th>
 </tr>
 <tr>
@@ -575,6 +598,16 @@ users.map((user) => (
 ```
 
 </td>
+</tr>
+</table>
+
+<table>
+<tr>
+<th>
+Custom Arrow Component
+</th>
+</tr>
+<tr>
 <td>
 
 ```tsx
@@ -629,15 +662,12 @@ Customize the option preview which appears on the right-hand side of the `Search
 
 #### Preview Examples
 
-The `preview` prop accepts a simple Renderable object or a custom component constructor.
+The `preview` prop accepts a simple [Renderable](#what-is-renderable) object or a custom component constructor.
 
 <table>
 <tr>
 <th>
 Renderable Object
-</th>
-<th>
-Custom Preview Component
 </th>
 </tr>
 <tr>
@@ -659,6 +689,16 @@ users.map((user) => (
 ```
 
 </td>
+</tr>
+</table>
+
+<table>
+<tr>
+<th>
+Custom Preview Component
+</th>
+</tr>
+<tr>
 <td>
 
 ```tsx
@@ -700,11 +740,105 @@ type PreviewProps = {
 type PreviewComponent = FunctionComponent<PreviewProps>;
 ```
 
+### Button
+
+Customize the `button` displayed in an option's preview panel.
+
+| Custom Button                                                       | Default Button <sub><sup>(with `cta`)</sup></sub>                |
+| ------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| ![](https://searchpal.s3.us-east-2.amazonaws.com/button-custom.png) | ![](https://searchpal.s3.us-east-2.amazonaws.com/button-def.png) |
+
+If the `Option` has an `href` and you passed through a custom [Link](#link) component, then your custom button will automatically be wrapped by your [Link](#link) (essentially, in those circumtances, it is unnecessary to include an `href` on your custom button).
+
+#### Button Examples
+
+The `button` prop accepts a simple [Renderable](#what-is-renderable) object or a custom component constructor.
+
+<table>
+<tr>
+<th>
+Renderable Object
+</th>
+</tr>
+<tr>
+<td>
+
+```tsx
+import { Option } from "searchpal";
+
+users.map((user) => (
+  <Option
+    button={
+      <button className="button" onClick={() => message(user.id)}>
+        Message {user.name}
+      </button>
+    }
+  />
+));
+```
+
+</td>
+</tr>
+</table>
+
+<table>
+<tr>
+<th>
+Custom Button Component
+</th>
+</tr>
+<tr>
+<td>
+
+```tsx
+import { Option, ButtonComponent } from "searchpal";
+
+const Button: ButtonComponent = ({ cta, onClick }) => {
+  return (
+    <button className="button" onClick={onClick}>
+      {cta}
+    </button>
+  );
+};
+
+users.map((user) => (
+  <Option
+    label={user.name}
+    cta={[`Message ${user.name.split(" ")[0]}`, <MessageSvg />]}
+    onClick={() => message(user.id)}
+    button={Button}
+  />
+));
+```
+
+</td>
+</tr>
+</table>
+
+#### Button Types
+
+```ts
+export type ButtonProps = {
+  label: string; // Option's label
+  onClick?: ClickEventHandler<HTMLButtonElement>; // Taken from Option's 'onClick' prop
+  cta: Renderable; // Taken from Option's 'cta' prop, default is "Select"
+};
+export type ButtonComponent = FunctionComponent<ButtonProps>;
+```
+
 ---
 
 ## Detail
 
 The `Detail` component can be used to add a row of info inside an `Option`'s preview panel.
+
+![](https://searchpal.s3.us-east-2.amazonaws.com/details.png)
+
+Import the `Detail` component:
+
+```js
+import { Detail } from "searchpal";
+```
 
 ### Detail Usage
 
@@ -752,6 +886,26 @@ users.map((user) => (
 ));
 ```
 
+### Detail Props
+
+Both `label` and `value` are required props.
+
+| Prop          | Accepts                           | Description                                       |
+| ------------- | --------------------------------- | ------------------------------------------------- |
+| **`label`\*** | `string`                          | The label/descriptor of the detail (left column). |
+| **`value`\*** | [Renderable](#what-is-renderable) | The value of the detail (right column).           |
+
+If you pass `value` a [Renderable](#what-is-renderable) object which exclusively contains falsey objects, the `Detail` might not display (alongside an error). As an example:
+
+```tsx
+<Detail
+  label="Sample"
+  value={[user?.name && user.name.first, user.verified && <VerifiedIcon />]}
+/>
+```
+
+In the event that both of those conditions return `false`, the `Detail` cannot be displayed. Internally `searchpal` runs a check on every [Renderable](#what-is-renderable) prop and filters out falsey values. If the prop exclusively contains falsey values, it will default to `undefined` (an error, considering `value` is required).
+
 ---
 
 ## What is `Renderable`?
@@ -797,7 +951,7 @@ git clone https://github.com/elijahharry/searchpal.git
 Run `npm install` from within the primary directory:
 
 ```
-cd spotlight
+cd searchpal
 npm i
 ```
 
@@ -816,12 +970,12 @@ npm run build
 Inside of the `demo` directory (sandbox), you can import directly from `lib` for testing purposes:<br />
 <sub>Import directly from `lib` (non-build, hot-reload):</sub>
 
-```
-import { Search } from '@searchpal/dev'
+```tsx
+import { Search } from "@searchpal/dev";
 ```
 
 <sub>Import latest build of `lib`:</sub>
 
-```
-import { Search } from '@searchpal/build'
+```tsx
+import { Search } from "@searchpal/build";
 ```

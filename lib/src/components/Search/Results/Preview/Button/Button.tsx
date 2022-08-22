@@ -1,18 +1,21 @@
 import React, { MouseEventHandler } from "react";
 import styled from "styled-components";
+import { Renderable } from "../../../../../../types";
 import { classes } from "../../../../../../utils/css";
 
 import { Span } from "../../../../Typography";
 
 export const Button = ({
   onClick,
+  cta,
 }: {
   onClick: MouseEventHandler<HTMLButtonElement>;
+  cta: Renderable;
 }) => {
   return (
     <ButtonBase type="button" onClick={onClick}>
       <Label weight="bold" truncate align="center">
-        Select
+        {cta}
       </Label>
     </ButtonBase>
   );
@@ -22,6 +25,8 @@ const Label = styled(Span)`
   position: relative;
   z-index: 5;
   /* text-transform: uppercase; */
+  display: inline-flex;
+  align-items: center;
   color: ${classes.accent.bg.color};
 `;
 

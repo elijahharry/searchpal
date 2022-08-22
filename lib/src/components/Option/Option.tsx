@@ -1,5 +1,4 @@
 import { FunctionComponent, useEffect } from "react";
-import { arrString, isFunction } from "../../../utils";
 import { OptionError, OptionProps, Searchable } from "../../../types";
 import { useSearch } from "../../context";
 import { useRefreshLimiter, useUuid } from "../../hooks";
@@ -13,12 +12,7 @@ export const Option: FunctionComponent<OptionProps> = (props_) => {
     if (props.id) {
       const id = props.id;
       try {
-        const { keywords, ...rest } = props;
-        const terms = arrString(
-          props.label,
-          isFunction(keywords) ? keywords(arrString) : keywords
-        );
-        const option = new Searchable({ ...rest, keywords: terms });
+        const option = new Searchable(props);
         if (checkEnv())
           for (const err of option.tinyErrors) console.error(err.toPretty());
         setData(({ options, errors }) => ({
@@ -32,9 +26,6 @@ export const Option: FunctionComponent<OptionProps> = (props_) => {
         if (checkEnv()) {
           if (e instanceof OptionError) {
             console.error(e.toPretty());
-            // console.error(
-            // `Search Option Error: ${e.message}\n\nInvalid prop:`
-            // );
           } else {
             console.error(e);
           }

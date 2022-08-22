@@ -19,6 +19,7 @@ export const Preview = ({
   href,
   preview: CustomPreview,
   button: CustomButton,
+  cta,
 }: Searchable) => {
   const [detailsRef, { height: detailsHeight }] = useRect<HTMLDListElement>();
   const detailsScrollable = useMemo(
@@ -78,13 +79,17 @@ export const Preview = ({
             isFunction(CustomButton) ? (
               <CustomButton
                 label={label}
+                cta={cta}
                 onClick={isFunction(onClick) ? onClick : undefined}
               />
             ) : (
               CustomButton
             )
           ) : (
-            <Button onClick={(e) => isFunction(onClick) && onClick(e)} />
+            <Button
+              onClick={(e) => isFunction(onClick) && onClick(e)}
+              cta={cta}
+            />
           )}
         </Link>
       </Bottom>

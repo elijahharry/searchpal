@@ -6,10 +6,10 @@ import { getChildComponentProps, isArray, isRenderable } from "../utils";
 //   MouseEventHandler,
 // } from "react";
 import { arrString, isString, cn, isFunction, isObject } from "../utils";
-import { DetailProps, OptionProps } from "./gen";
+import { DetailProps, OptionProps, Renderable } from "./gen";
 import { Detail } from "../src/components/Detail";
 import { getRenderable } from "../utils/renderable";
-import { isStringArray } from "../utils/is/is";
+import { isBoolean, isStringArray } from "../utils/is/is";
 
 // Constructors
 
@@ -86,6 +86,8 @@ export class Searchable {
   preview?: OptionProps["preview"];
   button?: OptionProps["button"];
   arrow?: OptionProps["arrow"];
+  cta: Renderable;
+  previewless: boolean;
   keywords: string[];
   id: string;
 
@@ -99,6 +101,8 @@ export class Searchable {
       onClick,
       img,
       children,
+      previewless,
+      cta,
       ...rest
     }: OptionProps & { id: string } // existingIds: string[]
   ) {
@@ -135,7 +139,7 @@ export class Searchable {
         this.sublabel = sublabel;
       } else {
         minorError(
-          "Sublabels can either be a string, number or ReactElement. It has been excluded from the option.",
+          `Sublabels can either be a string, number, ReactElement or an array of those types. See examples: ${renderableUrl}`,
           {
             prop: "sublabel",
           }
@@ -176,6 +180,34 @@ export class Searchable {
       }
     }
 
+    this.previewless = false;
+    if (previewless) {
+      if (isBoolean(previewless)) {
+        this.previewless = previewless;
+      } else {
+        this.previewless = false;
+        minorError(
+          "The 'previewless' prop only accepts a boolean (true / false).",
+          { prop: "previewless" }
+        );
+      }
+    }
+
+    this.cta = "Select";
+    if (cta) {
+      if (isRenderable(cta)) {
+        const cta_ = getRenderable(cta);
+        if (cta_) this.cta = cta_;
+      } else {
+        minorError(
+          `A button CTA can either be a string, number, ReactElement or an array of those types. See examples: ${renderableUrl}`,
+          {
+            prop: "cta",
+          }
+        );
+      }
+    }
+
     const components: { key: keyof typeof rest; func: string; hash: string }[] =
       [
         { key: "arrow", func: "ArrowComponent", hash: "arrow" },
@@ -206,53 +238,6 @@ export class Searchable {
       }
     }
 
-    // if (media) {
-    //   if (isValidElement(media)) {
-    //     this.media = media;
-    //   } else {
-    //     minorError(
-    //       "Media must be a valid ReactElement, so it has been excluded from the option.",
-    //       { prop: "media" }
-    //     );
-    //   }
-    // }
-
-    // if (preview) {
-    //   if (isValidElement(preview)) {
-    //     this.preview = preview;
-    //   } else {
-    //     minorError(
-    //       "Preview must be a valid ReactElement, so it has been excluded from the option.",
-    //       { prop: "preview" }
-    //     );
-    //   }
-    // }
-
-    // if (button) {
-    //   if (isValidElement(button)) {
-    //     this.button = button;
-    //   } else {
-    //     minorError(
-    //       "Button must be a valid ReactElement, so it has been excluded from the option.",
-    //       { prop: "button" }
-    //     );
-    //   }
-    // }
-
-    // if (arrow) {
-    //   if (isRenderable(arrow) || isFunction(arrow)) {
-    //     this.arrow = arrow;
-    //   } else {
-    //     minorError(
-    //       cn(
-    //         "Arrow can either be a custom Arrow component or a 'renderable' object. Learn more:",
-    //         getLibUrl("arrow")
-    //       ),
-    //       { prop: "arrow" }
-    //     );
-    //   }
-    // }
-
     this.keywords = [label];
 
     const addKeywords = (others: any[]) =>
@@ -279,7 +264,7 @@ export class Searchable {
                   ? "an array with non-string values."
                   : "an object that is not an array.",
                 "Did you return the built-in interpreter function? See examples of acceptable usage:",
-                getLibUrl("#keyword-interpreter-grin")
+                getLibUrl("keyword-interpreter")
               ),
               { prop: "keywords" }
             );
@@ -298,7 +283,7 @@ export class Searchable {
           minorError(
             cn(
               "Received an array with non-string values, 'keywords' only accepts an array of strings (or interpreter function). Attempting to filter the array. If your keywords are dependant on conditional formatting, use the built-in keyword interpreter:",
-              getLibUrl("#keyword-interpreter-grin")
+              getLibUrl("keyword-interpreter")
             ),
             { prop: "keywords" }
           );
@@ -308,7 +293,7 @@ export class Searchable {
         minorError(
           cn(
             "You can either pass through an array of strings or function which accesses the built-in keyword interpreter/filterer. See examples:",
-            getLibUrl("#keywords")
+            getLibUrl("keywords")
           ),
           { prop: "keywords" }
         );
@@ -332,7 +317,7 @@ export class Searchable {
               cn(
                 "Detail with label:",
                 label,
-                "has an invalid 'value'. The 'value' prop is required & must be a string, number, ReactFragment, ReactElement or array of those types. See acceptable examples:",
+                "has an invalid 'value'. The 'value' prop is required & must be a string, number, ReactElement or array of those types. See acceptable examples:",
                 getLibUrl("detail")
               ),
               {
@@ -355,8 +340,9 @@ export class Searchable {
   }
 }
 
-const libUrl = "https://github.com/elijahharry/spotlight/tree/main/lib";
+const libUrl = "https://github.com/elijahharry/searchpal";
 const getLibUrl = (hash: string) => libUrl + "#" + hash;
+const renderableUrl = getLibUrl("what-is-renderable");
 
 const isValidImg = (img: any): img is { src: string; alt?: string } =>
   isObject(img) &&

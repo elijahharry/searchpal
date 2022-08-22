@@ -1,6 +1,6 @@
 // import React from "react";
 
-import { Search, Option, Detail } from "@searchpal/build";
+import { Search, Option, Detail } from "@searchpal/dev";
 import { useState } from "react";
 import { users } from "./constants/users";
 
@@ -8,21 +8,24 @@ import { users } from "./constants/users";
 // import { ArrowSpotlight } from "./components/Samples/ArrowSpotlight";
 // import { MediaSpotlight } from "./components/Samples/MediaSpotlight";
 // import { PreviewcdSpotlight } from "./components/Samples/PreviewSpotlight";
+import { ButtonSpotlight } from "./components/Samples/ButtonSpotlight";
 
 function App() {
   const [open, setOpen] = useState(true);
 
   return (
     <div>
+      {/* <ButtonSpotlight /> */}
       <Search open={open} onClose={() => setOpen(false)} startExpanded>
         {users.map((user) => (
           <Option
             label={user.name}
-            // @ts-ignore
             // label={20000}
             sublabel={user.email}
             key={user.id}
+            // @ts-ignore
             img={{ src: user.avatar }}
+            cta={"Testing"}
             keywords={(interpret) =>
               interpret(
                 user.email,

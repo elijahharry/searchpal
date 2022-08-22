@@ -8,7 +8,7 @@ export type {
   PreviewProps,
   MediaComponent,
   MediaProps,
-  ButtomComponent,
+  ButtonComponent,
   ButtonProps,
 } from "./types";
 export { useDarkMode as usePrefersDark, Search, Option, Detail } from "./src";

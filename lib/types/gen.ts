@@ -8,13 +8,11 @@ import {
 } from "react";
 import {
   ArrowComponent,
-  ButtomComponent,
+  ButtonComponent,
   LinkComponent,
   MediaComponent,
   PreviewComponent,
 } from "./components";
-
-// export type SingleNode = ;
 
 export type RenderableItem =
   | string
@@ -106,10 +104,12 @@ export type OptionProps = PropsWithChildren<{
   img?: Img;
   href?: string;
   onClick?: (e: MouseEvent<HTMLButtonElement | HTMLDivElement>) => void;
+  cta?: Renderable;
+  previewless?: boolean;
   media?: Renderable | MediaComponent;
   preview?: Renderable | PreviewComponent;
   arrow?: Renderable | ArrowComponent;
-  button?: Renderable | ButtomComponent;
+  button?: Renderable | ButtonComponent;
 }>;
 
 export type SearchableOptionProps = Omit<OptionProps, "keyword"> & {
