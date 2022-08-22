@@ -18,12 +18,13 @@
 <td><a style='font-weight: 500' href='#getting-started'>Installation</a></td>
 <td><a style='font-weight: 500' href='#basic-usage'>Usage</a></td>
 <td><a style='font-weight: 500' href='#components'>Components</a></td>
+<td><a style='font-weight: 500' href='https://searchpal.elijahharry.com/'>Demo</a></td>
 </tr>
 </table>
 <!-- <a style='font-weight: 500' href='#search'>Screenshots</a> | <a style='font-weight: 500' href='#option'>Installation</a> | ><a style='font-weight: 500' href='#basic-usage'>Usage</a> -->
 </div>
 
-## Screenshots
+## Screenshots <sub><sup>or see a [live demo](https://searchpal.elijahharry.com/) :point_left:</sup><sub>
 
 ![](https://searchpal.s3.us-east-2.amazonaws.com/preview-bordered.png)
 
