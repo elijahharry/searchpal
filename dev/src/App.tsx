@@ -4,12 +4,6 @@ import { Search, Option, Detail } from "@searchpal/build";
 import { useState } from "react";
 import { users } from "./constants/users";
 
-// import { TestComponent } from "./components/TestComponent";
-// import { ArrowSpotlight } from "./components/Samples/ArrowSpotlight";
-// import { MediaSpotlight } from "./components/Samples/MediaSpotlight";
-// import { PreviewcdSpotlight } from "./components/Samples/PreviewSpotlight";
-import { ButtonSpotlight } from "./components/Samples/ButtonSpotlight";
-
 function App() {
   const [open, setOpen] = useState(true);
 

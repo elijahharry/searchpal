@@ -1,6 +1,6 @@
 {
   "name": "searchpal",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Search 'palette' component for React, inspired by MacOS Spotlight Search. Good-lookin' & customizable. Autocomplete, search previews & more. Set to find exact and/or fuzzy matches.",
   "main": "lib/dist/cjs/index.js",
   "module": "lib/dist/esm/index.js",
@@ -12,6 +12,7 @@
     "type": "git",
     "url": "https://github.com/elijahharry/searchpal"
   },
+  "homepage": "https://searchpal.elijahharry.com",
   "keywords": [
     "spotlight",
     "search",
@@ -25,7 +26,7 @@
     "fuzzy",
     "find"
   ],
-  "author": "Elijah Harry",
+  "author": "Elijah Harry <elijah@elijahharry.com> (https://elijahharry.com)",
   "license": "ISC",
   "peerDependencies": {
     "react": ">=16.8.0",
@@ -33,12 +34,15 @@
     "styled-components": ">=4.0.0"
   },
   "scripts": {
-    "dev": "npm start -w demo",
+    "dev": "npm start -w sandbox",
     "build": "npm run build -w lib",
-    "rebuild": "npm run watch -w lib"
+    "rebuild": "npm run watch -w lib",
+    "demo": "npm run dev -w demo",
+    "demo build": "npm run build -w demo"
   },
   "workspaces": [
     "lib",
+    "dev",
     "demo"
   ]
 }
