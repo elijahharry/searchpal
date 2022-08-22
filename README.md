@@ -2,7 +2,7 @@
   <img src='https://searchpal.s3.us-east-2.amazonaws.com/logo.gif' alt='Search Search' style='max-width: 100%; margin-bottom: -10%' width='160' height='160' />
 </p>
 <div dir="auto" align="center">
-  <h1 dir="auto" align="center"> <a href='https://searchpal.elijahharry.com/'>searchpal</a> <sub><sup>(search pal<s>ette</s>)</sup></sub></h1>
+  <h1 dir="auto" align="center"> <a target='_blank' href='https://searchpal.elijahharry.com/'>searchpal</a> <sub><sup>(search pal<s>ette</s>)</sup></sub></h1>
 </div>
 <div dir="auto" align="center">
   <strong>Search Pallete Component for React :mag: Inspired by Spotlight Search</strong>
