@@ -24,7 +24,7 @@ const Header = () => {
                 npm
               </span>
               <span className="inline-flex items-center">
-                Latest version 1.0.6{" "}
+                Latest version 1.0.7{" "}
                 <IoIosArrowForward aria-hidden size={13} className="ml-2" />
               </span>
             </a>
