@@ -10,7 +10,6 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
     <>
       <Header version={version} />
       <Demos />
-      {version}
       <div className="mx-auto pb-10 ctn">
         <h6 className="text-center text-lg text-gray-300 font-semibold italic">
           More coming soon...

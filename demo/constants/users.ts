@@ -7,8 +7,8 @@ export const users: SampleUser[] = [
     id: "13",
     avatar: "linus.png",
     organizations: [
-      { name: "Linux Foundation", image: "linux.png" },
-      { name: "Git", image: "git.png" },
+      { name: "Linux Foundation", image: "samples/linux.png" },
+      { name: "Git", image: "samples/git.png" },
     ],
   },
   {
@@ -19,9 +19,9 @@ export const users: SampleUser[] = [
     id: "12",
     avatar: "steve.png",
     organizations: [
-      { name: "Apple", image: "apple.png" },
-      { name: "Next", image: "next.png" },
-      { name: "Pixar", image: "pixar.png" },
+      { name: "Apple", image: "samples/apple.png" },
+      { name: "Next", image: "samples/next.png" },
+      { name: "Pixar", image: "samples/pixar.png" },
     ],
   },
 
@@ -33,11 +33,10 @@ export const users: SampleUser[] = [
     id: "11",
     avatar: "bill.png",
     organizations: [
-      { name: "Microsoft", image: "microsoft.png" },
-      { name: "Xbox", image: "xbox.png" },
+      { name: "Microsoft", image: "samples/microsoft.png" },
+      { name: "Xbox", image: "samples/xbox.png" },
     ],
   },
-
   {
     name: "Chris Smith",
     email: "chris@sample.com",

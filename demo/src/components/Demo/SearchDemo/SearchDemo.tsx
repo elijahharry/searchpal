@@ -3,6 +3,7 @@ import { Search as SearchPal, SearchProps, Detail } from "searchpal";
 import { useDemos, DemoId } from "../../../context";
 import { users, SampleUser } from "../../../../constants/users";
 import { ReactElement } from "react";
+import { Avatars } from "./Avatars";
 
 export type SearchDemoProps = Omit<SearchProps, "open" | "onClose" | "id"> & {
   id: DemoId;
@@ -44,6 +45,19 @@ export const SearchDemo = ({
           children: (
             <>
               <Detail label="Joined" value={user.joined} />
+              {user.organizations && (
+                <Detail
+                  label="Projects"
+                  value={
+                    <Avatars
+                      avatars={user.organizations.map((org) => ({
+                        src: org.image,
+                        alt: org.name,
+                      }))}
+                    />
+                  }
+                />
+              )}
             </>
           ),
         })
