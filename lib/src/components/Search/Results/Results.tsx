@@ -44,7 +44,7 @@ export const Results = () => {
 
   const active = useMemo(() => {
     const opts = options.filter((opt) => opt.id === activeId);
-    if (opts[0]) {
+    if (opts[0] && opts[0]?.previewless !== true) {
       return opts[0];
     }
     return null;
@@ -69,19 +69,6 @@ export const Results = () => {
             {options.map((opt, i) => (
               <Result {...opt} key={i.toString()} />
             ))}
-            {/* {options.length > 0 &&
-              options.map((option, i) => (
-                <Option
-                  {...option}
-                  key={[
-                    i.toString(),
-                    option.id.toString(),
-                    active && option.id === active.id ? true : false,
-                  ].join("")}
-                  // onSelect={() => setActive(option)}
-                  // isActive={active ? option.id === active.id : false}
-                />
-              ))} */}
           </ResultsList>
           {options.length < 1 && query && (
             <Resultless>

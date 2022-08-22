@@ -18,7 +18,7 @@ import {
   LinkComponent,
 } from "../../types";
 
-import { useEventListener } from "../hooks";
+import { useEventListener } from "../hooks/useEventListener";
 import {
   isString,
   isNumber,
