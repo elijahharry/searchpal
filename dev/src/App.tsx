@@ -1,6 +1,6 @@
 // import React from "react";
 
-import { Search, Option, Detail } from "@searchpal/build";
+import { Search, Option, Detail } from "@searchpal/dev";
 import { useState } from "react";
 import { users } from "./constants/users";
 
@@ -10,7 +10,14 @@ function App() {
   return (
     <div>
       {/* <ButtonSpotlight /> */}
-      <Search open={open} onClose={() => setOpen(false)} startExpanded>
+      <Search
+        open={open}
+        onClose={() => setOpen(false)}
+        startExpanded
+        // palette={{ dark: {} }}
+        // dark={false}
+        theme={(theme) => [new theme("dark", { accent: "red" })]}
+      >
         {users.map((user) => (
           <Option
             label={user.name}

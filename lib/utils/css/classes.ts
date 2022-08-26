@@ -43,19 +43,19 @@ export const truncateJs = {
 };
 
 export const bg = {
-  "background-color": "var(--spotlight-bg)",
+  "background-color": "var(--bg)",
 };
 
 export const border = {
-  "border-color": "var(--spotlight-border)",
+  "border-color": "var(--border)",
 };
 
 export const text = {
   color: {
-    primary: { color: "var(--spotlight-txt)" },
+    primary: { color: "var(--txt)" },
     secondary: {
-      color: "var(--spotlight-txt)",
-      opacity: "var(--spotlight-text-light-opacity)",
+      color: "var(--txt)",
+      opacity: "var(---text-light-opacity)",
     },
   },
   weight: {
@@ -101,10 +101,10 @@ export const text = {
 
 export const accent = {
   bg: {
-    "background-color": "var(--spotlight-accent)",
-    color: "var(--spotlight-accent-txt)",
+    "background-color": "var(--accent)",
+    color: "var(--accent-txt)",
   },
   text: {
-    color: "var(--spotlight-accent)",
+    color: "var(--accent)",
   },
 };

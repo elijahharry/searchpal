@@ -5,7 +5,7 @@ import { ColorVars, SearchProps } from "../../../types";
 export const Container = styled.div<{ vars: ColorVars }>`
   position: relative;
   z-index: 50;
-  --spotlight-text-light-opacity: 0.5;
+  ---text-light-opacity: 0.5;
   ${(props) => ({ ...props.vars })};
 `;
 
@@ -18,13 +18,13 @@ export const Backdrop = styled.span<{ show: boolean }>`
   z-index: 40;
   transition-property: opacity;
   display: block;
-  background-color: var(--spotlight-backdrop);
+  background-color: var(--backdrop);
   ${(props) =>
     props.show
       ? css`
           transition-duration: 200ms;
           transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
-          opacity: 0.5;
+          opacity: var(--backdrop-opacity);
         `
       : css`
           transition-duration: 300ms;
@@ -81,9 +81,9 @@ export const Modal = styled.div<{
   width: 100%;
   max-width: 48rem;
   border-radius: 1rem;
-  border: 1px solid var(--spotlight-border);
+  border: 1px solid var(--border);
   margin: 0 auto;
-  box-shadow: 0 25px 50px -12px var(--spotlight-shadow);
+  box-shadow: 0 25px 50px -12px var(--shadow);
   ${getVar("text")}
   ${getVar("bg")}
   ${(props) =>

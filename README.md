@@ -183,15 +183,16 @@ Customize the Search's color palette. You're able to choose between setting a st
 
 In the `Accepts` column, **`Color` signifies a valid color value (`RGB`, `RGBA`, `Hexadecimal`, `HSL`, etc) in the form of a `string`**.
 
-| Key              | Accepts                                    | Description                                                                                                                                                                                                                                                               |
-| ---------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `accent`         | `Color` or `{ color: Color, text: Color }` | Accent color utilized in some places of the modal (primarily buttons). The default overlaid text color is white (`#fff`). If you want to change the color of overlaid text, pass through an object with the following keys: `text` (text color) & `color` (accent color). |
-| `bg`             | `Color`                                    | Background color of the modal.                                                                                                                                                                                                                                            |
-| `text`           | `Color`                                    | Color of nearly all text (ignoring text overlaid on `accent` color) within the modal.                                                                                                                                                                                     |
-| `border`         | `Color`                                    | Color of borders used throughout modal.                                                                                                                                                                                                                                   |
-| `shadow`         | `Color`                                    | Shadow color of the modal.                                                                                                                                                                                                                                                |
-| `optionSelected` | `Color`                                    | Background color of an option when it is highlighted/selected.                                                                                                                                                                                                            |
-| `backdrop`       | `Color`                                    | Background color of the backdrop overlay.                                                                                                                                                                                                                                 |
+| Key               | Accepts                                    | Description                                                                                                                                                                                                                                                               |
+| ----------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `accent`          | `Color` or `{ color: Color, text: Color }` | Accent color utilized in some places of the modal (primarily buttons). The default overlaid text color is white (`#fff`). If you want to change the color of overlaid text, pass through an object with the following keys: `text` (text color) & `color` (accent color). |
+| `bg`              | `Color`                                    | Background color of the modal.                                                                                                                                                                                                                                            |
+| `text`            | `Color`                                    | Color of nearly all text (ignoring text overlaid on `accent` color) within the modal.                                                                                                                                                                                     |
+| `border`          | `Color`                                    | Color of borders used throughout modal.                                                                                                                                                                                                                                   |
+| `shadow`          | `Color`                                    | Shadow color of the modal.                                                                                                                                                                                                                                                |
+| `optionSelected`  | `Color`                                    | Background color of an option when it is highlighted/selected.                                                                                                                                                                                                            |
+| `backdrop`        | `Color`                                    | Background color of the backdrop overlay.                                                                                                                                                                                                                                 |
+| `backdropOpacity` | `number`<br /><sub>0 - 100</sub>           | An integer between **0 - 100** applied to the backdrop as opacity (i.e. `65` = `"opacity: .65;"`) when the modal is opened.                                                                                                                                               |
 
 #### Default Palette
 
@@ -204,6 +205,7 @@ By default, the palette is chosen from the dark/light versions below depending o
     text: "#27272a",
     border: "#f2f3f6",
     backdrop: "#e5e7eb",
+    backdropOpacity: 65,
     shadow: "rgba(156,163,175,.2)",
     optionSelected: "#f4f4f5",
     accent: {
@@ -216,6 +218,7 @@ By default, the palette is chosen from the dark/light versions below depending o
     text: "#fff",
     border: "#374151",
     backdrop: "#111827",
+    backdropOpacity: 65,
     shadow: "rgba(31,41,55,0.8)",
     optionSelected: "#4b5563",
     accent: {

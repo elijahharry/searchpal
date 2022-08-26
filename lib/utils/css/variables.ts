@@ -5,17 +5,17 @@ export const getVar = (
 ): { [key: string]: string } => {
   switch (variable) {
     case "text":
-      return { color: "var(--spotlight-txt)" };
+      return { color: "var(--txt)" };
     case "text-light":
       return {
-        color: "var(--spotlight-txt)",
-        opacity: "var(--spotlight-text-light-opacity)",
+        color: "var(--txt)",
+        opacity: "var(---text-light-opacity)",
       };
     case "bg":
-      return { "background-color": "var(--spotlight-bg)" };
+      return { "background-color": "var(--bg)" };
     case "border":
       return {
-        "border-color": "var(--spotlight-border)",
+        "border-color": "var(--border)",
       };
     default:
       return {};

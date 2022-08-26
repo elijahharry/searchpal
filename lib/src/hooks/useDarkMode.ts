@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useMediaQuery } from "./useMediaQuery";
 
-export const useDarkMode = (defaultValue?: boolean) => {
+export const useDarkMode = () => {
   const preferred = useMediaQuery("(prefers-color-scheme: dark)");
   const [dark, setDark] = useState(false);
 

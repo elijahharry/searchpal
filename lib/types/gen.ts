@@ -13,6 +13,7 @@ import {
   MediaComponent,
   PreviewComponent,
 } from "./components";
+import { Theme } from "./constructors";
 
 export type RenderableItem =
   | string
@@ -38,6 +39,7 @@ export type SearchPalette = {
   border?: CSSProperties["borderColor"];
   shadow?: CSSProperties["backgroundColor"];
   optionSelected?: CSSProperties["backgroundColor"];
+  backdropOpacity?: number;
 };
 
 export type SearchProps = {
@@ -57,6 +59,7 @@ export type SearchProps = {
   };
   algo?: SearchMode;
   previewBreakpoint?: number;
+  theme?: Theme | Theme[] | ((theme: typeof Theme) => Theme | Theme[]);
 };
 
 export type SearchLabels = {
@@ -71,15 +74,15 @@ export type SearchBreakpoints = {
 };
 
 export type ColorVars = {
-  "--spotlight-bg": string;
-  "--spotlight-txt": string;
-  // "--spotlight-txt-light": string;
-  "--spotlight-border": string;
-  "--spotlight-selected-option": string;
-  "--spotlight-accent": string;
-  "--spotlight-backdrop": string;
-  "--spotlight-accent-txt": string;
-  "--spotlight-shadow": string;
+  "--bg": string;
+  "--txt": string;
+  "--border": string;
+  "--selected-option": string;
+  "--accent": string;
+  "--backdrop": string;
+  "--accent-txt": string;
+  "--shadow": string;
+  "--backdrop-opacity": string;
 };
 
 export type GetKeywords = (...args: any[]) => string[];

@@ -1,5 +1,5 @@
 import { useMemo, useRef } from "react";
-import { isObject, isString } from "../../utils";
+import { isNumber, isObject, isString } from "../../utils";
 
 import { ColorVars, SearchPalette } from "../../types";
 import { useDarkMode } from "./useDarkMode";
@@ -24,6 +24,7 @@ export const usePaletteVariables = (
       backdrop: "#e5e7eb",
       shadow: "rgba(156,163,175,.2)",
       optionSelected: "#f4f4f5",
+      backdropOpacity: 65,
       accent: {
         color: "#3b82f6",
         text: "#fff",
@@ -34,12 +35,13 @@ export const usePaletteVariables = (
       text: "#fff",
       border: "#374151",
       backdrop: "#111827",
-      shadow: "rgba(31,41,55,0.8)",
+      shadow: "rgba(31,41,55,.8)",
       optionSelected: "#4b5563",
       accent: {
         color: "#3b82f6",
         text: "#fff",
       },
+      backdropOpacity: 65,
     },
   });
 
@@ -56,22 +58,26 @@ export const usePaletteVariables = (
         },
         user = input[mode];
       return {
-        "--spotlight-backdrop": user.backdrop || base.backdrop,
-        "--spotlight-bg": user.bg || base.bg,
-        "--spotlight-border": user.border || base.border,
-        "--spotlight-txt": user.text || base.text,
-        "--spotlight-shadow": user.shadow || base.shadow,
-        "--spotlight-selected-option":
-          user.optionSelected || base.optionSelected,
-        "--spotlight-accent": user.accent
+        "--backdrop": user.backdrop || base.backdrop,
+        "--bg": user.bg || base.bg,
+        "--border": user.border || base.border,
+        "--txt": user.text || base.text,
+        "--shadow": user.shadow || base.shadow,
+        "--selected-option": user.optionSelected || base.optionSelected,
+        "--accent": user.accent
           ? isAccent(user.accent)
             ? user.accent.color || base.accent.color
             : user.accent
           : base.accent.color,
-        "--spotlight-accent-txt":
+        "--accent-txt":
           user.accent && isAccent(user.accent) && isString(user.accent.text)
             ? user.accent.text
             : base.accent.text,
+        "--backdrop-opacity": `${getHundreths(
+          isNumber(user.backdropOpacity)
+            ? user.backdropOpacity
+            : base.backdropOpacity || 60
+        )}`,
       } as ColorVars;
     };
 
@@ -87,3 +93,5 @@ const isDynamicPalette = (palette: any): palette is Partial<CompletePalette> =>
 const isAccent = (accent: any): accent is { color?: string; text?: string } =>
   typeof accent === "object" &&
   (isString(accent.color) || isString(accent.text));
+
+const getHundreths = (num: number) => Math.round((num / 100) * 100) / 100;

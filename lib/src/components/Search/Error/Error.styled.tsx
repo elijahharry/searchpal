@@ -32,7 +32,7 @@ export const Alert = styled.div`
   color: #f11414;
   display: flex;
   align-items: flex-start;
-  /* border: 1px solid var(--spotlight-border); */
+  /* border: 1px solid var(--border); */
   margin: 0 auto;
   box-shadow: 0 25px 50px -12px #ff000010;
   border-radius: 0.5rem;

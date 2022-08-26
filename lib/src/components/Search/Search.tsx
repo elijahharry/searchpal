@@ -7,6 +7,7 @@ import { SearchProps } from "../../../types";
 import { SearchProvider } from "../../context";
 import { Field } from "./Field";
 import { AriaTitles } from "./AriaTitles";
+import { useTheme } from "../../hooks/useTheme";
 
 import {
   Container,
@@ -21,9 +22,10 @@ import { usePaletteVariables } from "../../hooks/usePalette";
 
 export const Search = ({
   palette,
-  dark: darkPref = "user",
+  dark = "user",
   animate = "slide",
   children,
+  theme,
   ...props
 }: PropsWithChildren<SearchProps>) => {
   const [open, setOpen] = useState(false);
@@ -36,7 +38,9 @@ export const Search = ({
   const ref = useRef<HTMLDivElement>(null);
   useOnClickOutside(ref, props.onClose);
 
-  const colors = usePaletteVariables(palette, darkPref);
+  const colors = usePaletteVariables(palette, dark);
+
+  const paletteVars = useTheme(theme, dark);
 
   const id = useUuid();
 
@@ -49,7 +53,7 @@ export const Search = ({
             role="dialog"
             aria-labelledby={`${id}-heading`}
             aria-modal
-            vars={colors}
+            vars={paletteVars}
           >
             <AriaTitles onClose={props.onClose} />
             <Backdrop show={show} aria-hidden />
