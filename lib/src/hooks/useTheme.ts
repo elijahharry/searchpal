@@ -1,6 +1,12 @@
 import { useEffect, useMemo } from "react";
 
-import { SearchProps, Theme, ThemeVariant } from "../../types";
+import {
+  ColorVars,
+  SearchProps,
+  testTheme,
+  Theme,
+  ThemeVariant,
+} from "../../types";
 import { useDarkMode } from "./useDarkMode";
 import { isArray, isFunction } from "../../utils";
 
@@ -13,50 +19,53 @@ export const useTheme = (
   input: SearchProps["theme"],
   darkPreference: SearchProps["dark"] = "user"
 ) => {
-  const userDark = useDarkMode();
-  const dark = useMemo(
-    () => (darkPreference === "user" ? userDark : darkPreference),
-    [userDark, darkPreference]
-  );
+  testTheme();
 
-  const themes = useMemo(() => {
-    const value = isFunction(input) ? input(Theme) : input,
-      arr = (isArray(value) ? value : [value]).filter(
-        (obj) => obj instanceof Theme
-      ) as Theme[];
+  return {} as ColorVars;
+  //   const userDark = useDarkMode();
+  //   const dark = useMemo(
+  //     () => (darkPreference === "user" ? userDark : darkPreference),
+  //     [userDark, darkPreference]
+  //   );
 
-    // Add darkPreference === "user" to if statement for autofill
-    if (arr.length === 0) {
-      const checkVariant = (variant: ThemeVariant) => {
-        for (const theme of arr) {
-          if (theme.variant === variant) {
-            return true;
-          }
-        }
-        return false;
-      };
-      const modes: ThemeVariant[] = ["dark", "light"];
-      for (const mode of modes) {
-        if (!checkVariant(mode)) arr.push(defaults[mode]);
-      }
-    }
-    return arr;
-  }, [input, darkPreference]);
+  //   const themes = useMemo(() => {
+  //     const value = isFunction(input) ? input(Theme) : input,
+  //       arr = (isArray(value) ? value : [value]).filter(
+  //         (obj) => obj instanceof Theme
+  //       ) as Theme[];
 
-  const active = useMemo(() => {
-    const variant: ThemeVariant = dark ? "dark" : "light";
-    for (const theme of themes) {
-      if (theme.variant === variant) {
-        return theme;
-      }
-    }
-    if (themes[0]) return themes[0];
-    return dark ? defaults.dark : defaults.light;
-  }, [themes, dark]);
+  //     // Add darkPreference === "user" to if statement for autofill
+  //     if (arr.length === 0) {
+  //       const checkVariant = (variant: ThemeVariant) => {
+  //         for (const theme of arr) {
+  //           if (theme.variant === variant) {
+  //             return true;
+  //           }
+  //         }
+  //         return false;
+  //       };
+  //       const modes: ThemeVariant[] = ["dark", "light"];
+  //       for (const mode of modes) {
+  //         if (!checkVariant(mode)) arr.push(defaults[mode]);
+  //       }
+  //     }
+  //     return arr;
+  //   }, [input, darkPreference]);
 
-  if (active) {
-    return active.getVars();
-  }
+  //   const active = useMemo(() => {
+  //     const variant: ThemeVariant = dark ? "dark" : "light";
+  //     for (const theme of themes) {
+  //       if (theme.variant === variant) {
+  //         return theme;
+  //       }
+  //     }
+  //     if (themes[0]) return themes[0];
+  //     return dark ? defaults.dark : defaults.light;
+  //   }, [themes, dark]);
 
-  return defaults[dark ? "dark" : "light"].getVars();
+  //   if (active) {
+  //     return active.getVars();
+  //   }
+
+  //   return defaults[dark ? "dark" : "light"].getVars();
 };

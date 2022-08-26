@@ -16,7 +16,7 @@ function App() {
         startExpanded
         // palette={{ dark: {} }}
         // dark={false}
-        theme={(theme) => [new theme("dark", { accent: "red" })]}
+        // theme={(theme) => [new theme("dark", { accent: "red" })]}
       >
         {users.map((user) => (
           <Option
