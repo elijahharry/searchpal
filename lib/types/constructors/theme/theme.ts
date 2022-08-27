@@ -27,24 +27,53 @@ export type ThemeVariant = "light" | "dark";
 
 export class Theme {
   variant: ThemeVariant;
-  #properties: ThemeProperties;
+  #light: ThemeProperties;
+  #dark: ThemeProperties;
+  #configured: ThemeVariant[];
+  #editing: ThemeVariant | "global";
+
+  setMode(mode: "light" | "dark" | "global" | null) {
+    const set = (mode: ThemeVariant | "global") => (this.#editing = mode);
+    switch (mode) {
+      case "light":
+        set("light");
+        return;
+      case "dark":
+        set("dark");
+        return;
+      default:
+        set("global");
+        return;
+    }
+  }
   accent(color, text) {
     this.#addProperty({ accent: color || undefined, accentText: text });
   }
   #addProperty(property: ThemeProperty) {
-    let properties = this.#properties || {},
-      values: Partial<ThemeProperty> = {};
-    Object.entries(property).forEach(([key, value]) => {
-      if (isString(value)) values = { ...values, [key]: value };
-    });
-
-    const additions = Object.keys(values) as (keyof ThemeProperties)[];
-    if (additions.length > 0) {
-      for (const key of additions) {
-        if (properties[key]) delete properties[key];
+    const getUpdated = (props: ThemeProperties | undefined) => {
+      let properties = props || ({} as ThemeProperties),
+        values: Partial<ThemeProperty> = {};
+      Object.entries(property).forEach(([key, value]) => {
+        if (isString(value)) values = { ...values, [key]: value };
+      });
+      const additions = Object.keys(values) as (keyof ThemeProperties)[];
+      if (additions.length > 0) {
+        for (const key of additions) {
+          if (properties[key]) delete properties[key];
+        }
       }
+      return { ...properties, ...values };
+    };
+
+    if (this.#editing === "dark" || this.#editing === "global") {
+      this.#dark = getUpdated(this.#dark);
     }
-    this.#properties = { ...properties, ...values };
+    if (this.#editing === "light" || this.#editing === "global") {
+      this.#light = getUpdated(this.#light);
+    }
+
+    if (this.#editing !== "global" && !this.#configured.includes(this.#editing))
+      this.#configured = [...this.#configured, this.#editing];
   }
 
   toVariables() {
@@ -63,7 +92,7 @@ export class Theme {
       optionSelectedBg,
       optionSelectedText,
       optionText,
-    } = this.#properties;
+    } = this.#light;
     return {
       "--accent": accent,
       "--accent-txt": accentText,
@@ -81,19 +110,25 @@ export class Theme {
       "--selected-option-txt": optionSelectedText,
     } as ColorVars;
   }
-  constructor(variant: ThemeVariant, props: ThemeProperty[]) {
-    this.variant = variant;
-    this.#properties = variant === "dark" ? defaults.dark : defaults.light;
-    for (const property of getThemeProperties(props)) {
-      this.#addProperty(property);
-    }
+  constructor(variant?: ThemeVariant, props?: ThemeProperty[]) {
+    this.#dark = defaults.dark;
+    this.#light = defaults.light;
+    this.#configured = [];
+
+    // this.variant = variant;
+    // this.#properties = variant === "dark" ? defaults.dark : defaults.light;
+    // for (const property of getThemeProperties(props)) {
+    //   this.#addProperty(property);
+    // }
   }
 }
 
 try {
-  const theme = new Theme("dark", []);
-  theme.variant = "light";
+  const theme = new Theme();
+  theme.setMode("light");
   theme.accent("#fff", "#000");
+
+  console.log(theme);
 } catch (e) {}
 
 export type ThemeCreator = (
