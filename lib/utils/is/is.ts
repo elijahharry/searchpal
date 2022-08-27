@@ -1,5 +1,4 @@
 import { isValidElement, Fragment } from "react";
-// import { ec } from "../combinators";
 import { Renderable, RenderableItem } from "../../types";
 
 export const isArray = (obj?: any): obj is any[] => Array.isArray(obj);
@@ -39,8 +38,6 @@ export const isRenderable = (obj: any): obj is Renderable => {
   }
   return isRenderableItem(obj);
 };
-
-// export const isElement = (obj: any ): obj is CustomElement
 
 export const isInteger = (obj: any): boolean =>
   String(Math.floor(Number(obj))) === obj;

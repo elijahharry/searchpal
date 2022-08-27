@@ -1,6 +1,5 @@
 import { isFunction, isNumber, str } from "../../utils";
 import { CSSProperties } from "react";
-// import { ThemeProperties, ThemeProperty } from "./properties";
 
 export type ThemeProperties = {
   accent: string;

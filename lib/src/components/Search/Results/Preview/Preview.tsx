@@ -1,5 +1,4 @@
 import { Searchable } from "../../../../../types";
-// import { useSearch } from "../../../../context";
 import React, { isValidElement, useMemo } from "react";
 import { Link } from "../../Link";
 import { Bottom, Container, Top, Details, DetailList } from "./Preview.styled";

@@ -1,6 +1,6 @@
 // import React from "react";
 
-import { Search, Option, Detail } from "@searchpal/dev";
+import { Search, Option, Detail } from "@searchpal/build";
 import { useState } from "react";
 import { users } from "./constants/users";
 
@@ -14,8 +14,21 @@ function App() {
         onClose={() => setOpen(false)}
         startExpanded
         theme={(theme) => {
-          // theme.accent("Background");
-          // theme.border("red");
+          theme.accent("red", "whitesmoke");
+          theme.option("blue");
+          theme.light.option.selected("red");
+          theme.set({
+            accent: "#1c4bd6",
+            accentText: "#fff",
+            // accentText: "#18308f",
+            background: "#1a2654",
+            borderColor: "#29366d",
+            optionSelectedBackground: "#3250ab",
+            optionSelectedText: "#ffffff",
+            backdrop: "#002477",
+            backdropOpacity: ".8",
+            shadow: "0 10px 20px 5px #0d1a6630",
+          });
           return theme;
         }}
       >

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-// import { classes, mediaQuery, getBorder } from "../../../utils/css";
 
 export const Label = styled.dt`
   grid-column-end: 1;

@@ -82,7 +82,6 @@ const getStyles = (props: TypographyProps) => {
     sr = props["sr-only"] ? classes.srOnlyJs : {},
     color = props.fade ? getVarClass("text-light") : getVarClass("text");
   return {
-    // margin: "0",
     marginTop: 0,
     marginBottom: 0,
     ...(props.align ? { textAlign: props.align } : {}),
