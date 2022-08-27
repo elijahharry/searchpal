@@ -36,11 +36,12 @@
 
 </h4>
 
-Replaced `palette` prop with an improved [Theme Object](#theme)
-
 </td>
 </tr>
 </table>
+
+Replaced `palette` prop with an improved [Theme Object](#theme)
+
 </div>
 
 <br />
