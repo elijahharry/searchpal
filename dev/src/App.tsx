@@ -48,11 +48,3 @@ function App() {
 }
 
 export default App;
-
-// const test = {
-//   default: function (red: any) {
-//     console.log(red);
-//   },
-// };
-
-// console.log(test("balls"));
