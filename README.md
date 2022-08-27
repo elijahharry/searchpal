@@ -28,7 +28,13 @@
 
 <blockquote>
 
+<h6>
+
 :sparkles: :tada: **Version 2 Released**: Replaced `palette` with an improved [Theme Object](#theme) :partying_face:
+
+</h6>
+
+See the full release log
 
 </blockquote>
 
