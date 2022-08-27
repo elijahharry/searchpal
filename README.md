@@ -285,8 +285,6 @@ theme.accent(Color, TextColor);
 
 `TextColor` is for adjusting the color of text overlaid ontop of the accent (i.e. in [Buttons](#button)).
 
-<sub>
-
 **Using `theme.accent()`**:
 
 ```tsx
@@ -296,8 +294,6 @@ theme.accent("lightblue", "darkblue");
 theme.light.accent("#00165a", "#fff");
 theme.dark.accent("red", "white");
 ```
-
-</sub>
 
 </td>
 </tr>
@@ -314,8 +310,6 @@ theme.bg(BackgroundColor);
 
 `BackgroundColor` is the background color of the entire search palette.
 
-<sub>
-
 **Using `theme.bg()`**:
 
 ```tsx
@@ -325,8 +319,6 @@ theme.bg("#d3d3d3");
 theme.light.bg("white");
 theme.dark.bg("#000080");
 ```
-
-</sub>
 
 </td>
 </tr>
@@ -343,8 +335,6 @@ theme.text(PrimaryColor, SecondaryColor);
 
 `PrimaryColor` is the primary text color, `SecondaryColor` is the 'secondary' (faded/light) text color.
 
-<sub>
-
 **Using `theme.text()`**:
 
 ```tsx
@@ -354,8 +344,6 @@ theme.text("rgb(60,60,60)", "rgb(200,200,200)");
 theme.light.text("black", "grey");
 theme.dark.text("white", "#d3d3d3");
 ```
-
-</sub>
 
 </td>
 </tr>
@@ -372,8 +360,6 @@ theme.border(BorderColor, BorderWidth);
 
 Border styles used on every bordered element you see within the search palette. `BorderColor` being the color & `BorderWidth` being the width.
 
-<sub>
-
 **Using `theme.border()`**:
 
 ```tsx
@@ -384,7 +370,6 @@ theme.light.border("grey", ".2rem");
 theme.dark.border("transparent", 0);
 ```
 
-</sub>
 </td>
 </tr>
 
@@ -400,8 +385,6 @@ theme.shadow(BoxShadow);
 
 Border styles used on every bordered element you see within the search palette. `BorderColor` being the color & `BorderWidth` being the width.
 
-<sub>
-
 **Using `theme.shadow()`**:
 
 ```tsx
@@ -412,7 +395,6 @@ theme.light.shadow("0px 10px 10px 5px rgb(200,200,200,.5)");
 theme.dark.shadow("0px 10px 10px 5px rgb(0,0,0,.6)");
 ```
 
-</sub>
 </td>
 </tr>
 
@@ -428,8 +410,6 @@ theme.backdrop(BackgroundColor, Opacity);
 
 Adjusts the color/opacity of the backdrop _behind_ the modal, used to give it some contrast when it's floating above the rest of your app. `BackgroundColor` is the backdrop's color, and `Opacity` is it's opacity level (i.e. `.65`) when it is fully-opened.
 
-<sub>
-
 **Using `theme.backdrop()`**:
 
 ```tsx
@@ -440,7 +420,6 @@ theme.light.backdrop("#d3d3d3", ".6");
 theme.dark.backdrop("#00165a", "55%");
 ```
 
-</sub>
 </td>
 </tr>
 
@@ -462,8 +441,6 @@ The `theme.option` method can be used to edit the background/text colors of an [
 theme.option(BackgroundColor, TextColor);
 ```
 
-<sub>
-
 **Using `theme.option()`**:
 
 ```tsx
@@ -474,8 +451,6 @@ theme.light.option("white", "#000");
 theme.dark.option("transparent", "#fff");
 ```
 
-</sub>
-
 </li>
 <li>
 
@@ -484,8 +459,6 @@ theme.dark.option("transparent", "#fff");
 ```tsx
 theme.option.selected(BackgroundColor, TextColor);
 ```
-
-<sub>
 
 **Using `theme.option.selected()`**:
 
@@ -496,8 +469,6 @@ theme.option.selected("blue", "lightblue");
 theme.light.option.selected("#000", "#fff");
 theme.dark.option.selected("#fff", "#000");
 ```
-
-</sub>
 
 </li>
 </ul>
@@ -517,8 +488,6 @@ theme.backdrop(BackgroundColor, Opacity);
 
 Adjusts the color/opacity of the backdrop _behind_ the modal, used to give it some contrast when it's floating above the rest of your app. `BackgroundColor` is the backdrop's color, and `Opacity` is it's opacity level (i.e. `.65`) when it is fully-opened.
 
-<sub>
-
 **Using `theme.backdrop()`**:
 
 ```tsx
@@ -529,7 +498,6 @@ theme.light.backdrop("#d3d3d3", ".6");
 theme.dark.backdrop("#00165a", "55%");
 ```
 
-</sub>
 </td>
 </tr>
 
@@ -541,8 +509,6 @@ set
 
 If you want to just pass through an non-nested object filled with your theme settings, you can do so with the `theme.set` method. This method accepts a [ThemeProperties](#) object.
 
-<sub>
-
 **Using `theme.set()`**:
 
 ```tsx
@@ -553,7 +519,6 @@ theme.light.set({ accent: "red", borderColor: "rgb(240,240,240)" });
 theme.dark.set({ accent: "lightblue", accentText: "darkblue" });
 ```
 
-</sub>
 </td>
 </tr>
 
