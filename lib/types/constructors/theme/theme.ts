@@ -3,6 +3,7 @@ import {
   ThemeProperties,
   ThemeProperty,
   getThemeProperties,
+  AccentThemer,
 } from "./properties";
 
 export type ColorVars = {
@@ -26,7 +27,26 @@ export type ThemeVariant = "light" | "dark";
 
 export class Theme {
   variant: ThemeVariant;
-  properties: ThemeProperties;
+  #properties: ThemeProperties;
+  accent(color, text) {
+    this.#addProperty({ accent: color || undefined, accentText: text });
+  }
+  #addProperty(property: ThemeProperty) {
+    let properties = this.#properties || {},
+      values: Partial<ThemeProperty> = {};
+    Object.entries(property).forEach(([key, value]) => {
+      if (isString(value)) values = { ...values, [key]: value };
+    });
+
+    const additions = Object.keys(values) as (keyof ThemeProperties)[];
+    if (additions.length > 0) {
+      for (const key of additions) {
+        if (properties[key]) delete properties[key];
+      }
+    }
+    this.#properties = { ...properties, ...values };
+  }
+
   toVariables() {
     const {
       accent,
@@ -43,7 +63,7 @@ export class Theme {
       optionSelectedBg,
       optionSelectedText,
       optionText,
-    } = this.properties;
+    } = this.#properties;
     return {
       "--accent": accent,
       "--accent-txt": accentText,
@@ -63,25 +83,18 @@ export class Theme {
   }
   constructor(variant: ThemeVariant, props: ThemeProperty[]) {
     this.variant = variant;
-    let properties = variant === "dark" ? defaults.dark : defaults.light;
+    this.#properties = variant === "dark" ? defaults.dark : defaults.light;
     for (const property of getThemeProperties(props)) {
-      console.log(property);
-      let values: Partial<ThemeProperty> = {};
-      Object.entries(property).forEach(([key, value]) => {
-        if (isString(value)) values = { ...values, [key]: value };
-      });
-
-      const additions = Object.keys(values) as (keyof ThemeProperties)[];
-      if (additions.length > 0) {
-        for (const key of additions) {
-          if (properties[key]) delete properties[key];
-        }
-      }
-      properties = { ...properties, ...values };
+      this.#addProperty(property);
     }
-    this.properties = properties;
   }
 }
+
+try {
+  const theme = new Theme("dark", []);
+  theme.variant = "light";
+  theme.accent("#fff", "#000");
+} catch (e) {}
 
 export type ThemeCreator = (
   variant: ThemeVariant,
@@ -119,7 +132,7 @@ const defaults: { light: ThemeProperties; dark: ThemeProperties } = {
     background: "#1f2937",
     text: "#fff",
     textSecondary: "#8e939a",
-    borderColor: "#f2f3f6",
+    borderColor: "#494949",
     borderWidth: "1px",
     shadow: "0 25px 50px -12px rgba(31,41,55,.8)",
     backdrop: "#111827",

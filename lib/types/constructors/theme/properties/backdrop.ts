@@ -1,13 +1,12 @@
 import { str } from "../../../../utils";
-import { Properties } from "./types";
-
+import { Properties, CSS } from "./types";
 import { Property } from "csstype";
 
 export class Backdrop implements Properties<"backdrop" | "backdropOpacity"> {
   backdrop?: string;
   backdropOpacity?: string;
   constructor(
-    backgroundColor?: Property.BackgroundColor | null,
+    backgroundColor?: CSS<"backgroundColor"> | null,
     opacity?: Property.Opacity
   ) {
     if (backgroundColor) this.backdrop = str(backgroundColor);
@@ -16,7 +15,7 @@ export class Backdrop implements Properties<"backdrop" | "backdropOpacity"> {
 }
 
 export type BackdropThemer = (
-  backgroundColor: Property.BackgroundColor | null,
+  backgroundColor: CSS<"backgroundColor"> | null,
   opacity?: Property.Opacity
 ) => Backdrop;
 

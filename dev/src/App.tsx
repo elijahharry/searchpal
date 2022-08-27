@@ -14,9 +14,21 @@ function App() {
         open={open}
         onClose={() => setOpen(false)}
         startExpanded
-        // palette={{ dark: {} }}
-        // dark={false}
-        // theme={(theme) => [new theme("dark", { accent: "red" })]}
+        theme={(
+          theme,
+          { accent, border, shadow, option, backdrop, background, text }
+        ) => [
+          theme(
+            "dark",
+            // accent("yellow", "red"),
+            // border("#000", 5),
+            // shadow("10px 10px 100px red"),
+            // option(true, "blue", "lightblue"),
+            backdrop("black", 0.9),
+            // background("#fff"),
+            text("red", "lightred")
+          ),
+        ]}
       >
         {users.map((user) => (
           <Option

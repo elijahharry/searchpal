@@ -1,3 +1,5 @@
+import { CSSProperties } from "react";
+
 export type ThemeProperties = {
   accent: string;
   accentText: string;
@@ -14,6 +16,11 @@ export type ThemeProperties = {
   optionSelectedBg: string;
   optionSelectedText: string;
 };
+
+export type CSS<T extends keyof CSSProperties> = Exclude<
+  CSSProperties[T],
+  undefined
+>;
 
 export type Properties<T extends keyof ThemeProperties> = Partial<
   Pick<ThemeProperties, T>

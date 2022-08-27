@@ -1,6 +1,5 @@
 import { str } from "../../../../utils";
-import { Properties } from "./types";
-import { Property } from "csstype";
+import { Properties, CSS } from "./types";
 
 export class Option
   implements
@@ -14,8 +13,8 @@ export class Option
   optionText?: string;
   constructor(
     isSelected: "selected" | null | boolean,
-    backgroundColor?: Property.BackgroundColor | null,
-    textColor?: Property.Color
+    backgroundColor?: CSS<"backgroundColor"> | null,
+    textColor?: CSS<"color">
   ) {
     if (isSelected === "selected" || isSelected === true) {
       if (backgroundColor) this.optionSelectedBg = str(backgroundColor);
@@ -30,8 +29,8 @@ export class Option
 
 export type OptionThemer = (
   isSelected: "selected" | null | boolean,
-  backgroundColor: Property.BackgroundColor | null,
-  textColor?: Property.Color
+  backgroundColor: CSS<"backgroundColor"> | null,
+  textColor?: CSS<"color">
 ) => Option;
 
 export const option: OptionThemer = (mode, backgroundColor, textColor) =>
