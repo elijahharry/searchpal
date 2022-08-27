@@ -27,7 +27,9 @@
 <!-- <div dir='auto' align="center"> -->
 
 <div dir="auto" align="center">
-
+<table>
+<tr>
+<td>
 <h4>
 
 **Version 2 Released!** :partying_face: :tada:
@@ -35,6 +37,11 @@
 </h4>
 
 Replaced `palette` prop with an improved [Theme Object](#theme)
+
+</td>
+</tr>
+</table>
+</div>
 
 <br />
 
