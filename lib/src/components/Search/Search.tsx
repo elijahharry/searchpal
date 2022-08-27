@@ -41,8 +41,8 @@ export const Search = ({
 
   // const colors = usePaletteVariables(palette, dark);
 
-  const userTheme = useTheme(theme, dark),
-    defaultTheme = useTheme(undefined, dark);
+  const userTheme = useTheme(theme, dark);
+  const defaultTheme = useTheme(undefined, dark);
 
   const id = useUuid();
 
