@@ -28,7 +28,7 @@
 
 <blockquote>
 
-:bell: :partying_face: **Version 2 Released**: Replaced `palette` with an improved [Theme Object](#theme) :tada:
+:sparkles: :tada: **Version 2 Released**: Replaced `palette` with an improved [Theme Object](#theme) :partying_face:
 
 </blockquote>
 
