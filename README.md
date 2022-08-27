@@ -28,15 +28,23 @@
 
 <div dir="auto" align="center">
 
-<h5>
+<br />
 
-:tada: **Version 2 Released!** :sparkles:
+<h4>
 
-</h5>
+:bell: Announcements
 
-Replaced `palette` with an improved [Theme Object](#theme) :partying_face:
+</h4>
 
-</blockquote>
+<h3>
+
+**Version 2 Released!** :partying_face: :tada:
+
+</h3>
+
+Replaced `palette` prop with an improved [Theme Object](#theme)
+
+<br />
 
 <!-- </div> -->
 
