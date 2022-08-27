@@ -24,11 +24,15 @@
 <!-- <a style='font-weight: 500' href='#search'>Screenshots</a> | <a style='font-weight: 500' href='#option'>Installation</a> | ><a style='font-weight: 500' href='#basic-usage'>Usage</a> -->
 </div>
 
-<div dir='auto' align="center">
+<!-- <div dir='auto' align="center"> -->
 
-> :partying_face: Version 2: Replaced `palette` with an improved [Theme Object](#theme).
+<blockquote>
 
-</div>
+:bell: :partying_face: **Version 2 Released**: Replaced `palette` with an improved [Theme Object](#theme) :tada:
+
+</blockquote>
+
+<!-- </div> -->
 
 ## Screenshots <sub><sup>or see a [live demo](https://searchpal.elijahharry.com/) :point_left:</sup><sub>
 
