@@ -62,7 +62,7 @@ export type ThemeVariant = "light" | "dark";
 class Palette {
   #properties: ThemeProperties;
   #addProperties(obj: Partial<{ [key in keyof ThemeProperties]: any }>) {
-    let properties = this.#properties,
+    let properties = { ...this.#properties },
       values: Partial<ThemeProperties> = {};
     Object.entries(obj).forEach(([key, value]) => {
       if (themeProperties.has(key) && (value || value === 0))
@@ -148,6 +148,7 @@ class Palette {
       optionSelectedText,
       optionText,
     } = this.#properties;
+
     return {
       "--accent": accent,
       "--accent-txt": accentText,
