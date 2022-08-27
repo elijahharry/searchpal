@@ -261,7 +261,7 @@ theme.accent(Color, TextColor);
 
 `TextColor` is for adjusting the color of text overlaid ontop of the accent (i.e. in [Buttons](#button)).
 
-<sub>
+<sub> <br />
 
 **Using `theme.accent()`**:
 
@@ -290,7 +290,7 @@ theme.bg(BackgroundColor);
 
 `BackgroundColor` is the background color of the entire search palette.
 
-<sub>
+<sub> <br />
 
 **Using `theme.bg()`**:
 
@@ -319,7 +319,7 @@ theme.text(PrimaryColor, SecondaryColor);
 
 `PrimaryColor` is the primary text color, `SecondaryColor` is the 'secondary' (faded/light) text color.
 
-<sub>
+<sub> <br />
 
 **Using `theme.text()`**:
 
@@ -348,7 +348,7 @@ theme.border(BorderColor, BorderWidth);
 
 Border styles used on every bordered element you see within the search palette. `BorderColor` being the color & `BorderWidth` being the width.
 
-<sub>
+<sub> <br />
 
 **Using `theme.border()`**:
 
@@ -376,7 +376,7 @@ theme.shadow(BoxShadow);
 
 Border styles used on every bordered element you see within the search palette. `BorderColor` being the color & `BorderWidth` being the width.
 
-<sub>
+<sub> <br />
 
 **Using `theme.shadow()`**:
 
@@ -404,7 +404,7 @@ theme.backdrop(BackgroundColor, Opacity);
 
 Adjusts the color/opacity of the backdrop _behind_ the modal, used to give it some contrast when it's floating above the rest of your app. `BackgroundColor` is the backdrop's color, and `Opacity` is it's opacity level (i.e. `.65`) when it is fully-opened.
 
-<sub>
+<sub> <br />
 
 **Using `theme.backdrop()`**:
 
@@ -438,7 +438,7 @@ The `theme.option` method can be used to edit the background/text colors of an [
 theme.option(BackgroundColor, TextColor);
 ```
 
-<sub>
+<sub> <br />
 
 **Using `theme.option()`**:
 
@@ -461,7 +461,7 @@ theme.dark.option("transparent", "#fff");
 theme.option.selected(BackgroundColor, TextColor);
 ```
 
-<sub>
+<sub> <br />
 
 **Using `theme.option.selected()`**:
 
@@ -493,7 +493,7 @@ theme.backdrop(BackgroundColor, Opacity);
 
 Adjusts the color/opacity of the backdrop _behind_ the modal, used to give it some contrast when it's floating above the rest of your app. `BackgroundColor` is the backdrop's color, and `Opacity` is it's opacity level (i.e. `.65`) when it is fully-opened.
 
-<sub>
+<sub> <br />
 
 **Using `theme.backdrop()`**:
 
@@ -517,7 +517,7 @@ set
 
 If you want to just pass through an non-nested object filled with your theme settings, you can do so with the `theme.set` method. This method accepts a [ThemeProperties](#) object.
 
-<sub>
+<sub> <br />
 
 **Using `theme.set()`**:
 
