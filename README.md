@@ -36,7 +36,7 @@
 
 <sup>
 
-Replaced `palette` prop with an improved [Theme Object](#theme)
+Replaced `palette` prop with an improved [Theme Object](#theme). See the full [release note](https://github.com/elijahharry/searchpal/releases/tag/themes).
 
 </sup>
 
