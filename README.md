@@ -27,18 +27,10 @@
 <!-- <div dir='auto' align="center"> -->
 
 <div dir="auto" align="center">
-<table>
-<tr>
-<td>
-<h4>
 
 **Version 2 Released!** :partying_face: :tada:
 
 </h4>
-
-</td>
-</tr>
-</table>
 
 Replaced `palette` prop with an improved [Theme Object](#theme)
 
@@ -202,6 +194,8 @@ Search comes with two seperate search algorithms (and one combination of the two
 ### Theme
 
 Customize the theme (colors, borders, shadows, etc) of the search palette via the [Theme Object](#theme-object).
+
+![](https://searchpal.s3.us-east-2.amazonaws.com/releases/2/theme-2.gif)
 
 #### Theme Examples
 
@@ -585,7 +579,7 @@ By default, the palette is chosen from the dark/light versions below depending o
     background: "#1f2937",
     text: "#fff",
     textSecondary: "#8e939a",
-    borderColor: "#494949",
+    borderColor: "#393939",
     shadow: "0 25px 50px -12px rgba(31,41,55,.8)",
     backdrop: "#111827",
     backdropOpacity: ".65",

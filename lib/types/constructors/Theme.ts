@@ -244,16 +244,9 @@ export class Theme {
     ) => void;
   };
 
-  set(
-    theme?: Partial<ThemeProperties> & {
-      light?: Partial<ThemeProperties>;
-      dark?: Partial<ThemeProperties>;
-    }
-  ) {
+  set(theme?: Partial<ThemeProperties>) {
     if (theme) {
       this.#global("set", theme);
-      if (theme.light) this.light.set(theme.light);
-      if (theme.dark) this.dark.set(theme.dark);
     }
   }
 
@@ -267,6 +260,8 @@ export class Theme {
     this.light = new Palette("light");
     if (initial) {
       this.set(initial);
+      if (initial.light) this.light.set(initial.light);
+      if (initial.dark) this.dark.set(initial.dark);
     }
 
     this.option = Object.assign(
@@ -317,7 +312,7 @@ const defaults: { light: ThemeProperties; dark: ThemeProperties } = {
     background: "#1f2937",
     text: "#fff",
     textSecondary: "#8e939a",
-    borderColor: "#494949",
+    borderColor: "#393939",
     borderWidth: "1px",
     shadow: "0 25px 50px -12px rgba(31,41,55,.8)",
     backdrop: "#111827",
