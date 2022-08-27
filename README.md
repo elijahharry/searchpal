@@ -26,6 +26,8 @@
 
 <!-- <div dir='auto' align="center"> -->
 
+<br />
+
 <div dir="auto" align="center">
 
 **Version 2 Released!** :partying_face: :tada:
