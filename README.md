@@ -26,15 +26,15 @@
 
 <!-- <div dir='auto' align="center"> -->
 
-<blockquote>
+<div dir="auto" align="center">
 
-<h6>
+<h5>
 
-:sparkles: :tada: **Version 2 Released**: Replaced `palette` with an improved [Theme Object](#theme) :partying_face:
+:tada: **Version 2 Released!** :sparkles:
 
-</h6>
+</h5>
 
-See the full release log
+Replaced `palette` with an improved [Theme Object](#theme) :partying_face:
 
 </blockquote>
 
