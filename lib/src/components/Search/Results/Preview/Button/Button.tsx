@@ -1,7 +1,7 @@
 import React, { MouseEventHandler } from "react";
 import styled from "styled-components";
 import { Renderable } from "../../../../../../types";
-import { classes } from "../../../../../../utils/css";
+import { getVar } from "../../../../../../utils/css";
 
 import { Span } from "../../../../Typography";
 
@@ -27,7 +27,7 @@ const Label = styled(Span)`
   /* text-transform: uppercase; */
   display: inline-flex;
   align-items: center;
-  color: ${classes.accent.bg.color};
+  color: ${getVar("accent-txt")};
 `;
 
 const ButtonBase = styled.button`
@@ -43,6 +43,7 @@ const ButtonBase = styled.button`
   -webkit-user-select: none;
   touch-action: manipulation;
   position: relative;
+  background-color: ${getVar("accent")};
   &::after {
     content: "";
     position: absolute;
@@ -71,5 +72,4 @@ const ButtonBase = styled.button`
   &:active {
     transform: scale(0.975);
   }
-  ${classes.accent.bg}
 `;

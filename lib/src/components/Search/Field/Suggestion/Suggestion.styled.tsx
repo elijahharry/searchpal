@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { classes, getVar } from "../../../../../utils/css";
+import { classes, getVarClass } from "../../../../../utils/css";
 
 export const Content = styled.div`
   position: absolute;
@@ -21,5 +21,5 @@ export const Text = styled.span<{ visible: boolean }>`
           visibility: hidden;
           color: transparent;
         `
-      : getVar("text-light")}
+      : getVarClass("text-light")}
 `;

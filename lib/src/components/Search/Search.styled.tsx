@@ -1,12 +1,18 @@
 import styled, { css } from "styled-components";
-import { mediaQuery, getVar } from "../../../utils/css";
+import { mediaQuery, getVarClass } from "../../../utils/css";
 import { ColorVars, SearchProps } from "../../../types";
 
-export const Container = styled.div<{ vars: ColorVars }>`
+export const Container = styled.div`
   position: relative;
   z-index: 50;
-  ---text-light-opacity: 0.5;
-  ${(props) => ({ ...props.vars })};
+`;
+
+export const ThemeProvider = styled.div<{
+  backup: ColorVars;
+  theme: ColorVars;
+}>`
+  ${(props) => props.backup}
+  ${(props) => props.theme}
 `;
 
 export const Backdrop = styled.span<{ show: boolean }>`
@@ -84,8 +90,9 @@ export const Modal = styled.div<{
   border: 1px solid var(--border);
   margin: 0 auto;
   box-shadow: 0 25px 50px -12px var(--shadow);
-  ${getVar("text")}
-  ${getVar("bg")}
+  ${getVarClass("text")}
+  ${getVarClass("bg")}
+  ${getVarClass("shadow")}
   ${(props) =>
     props.transitioning &&
     css`
@@ -124,16 +131,6 @@ export const Modal = styled.div<{
             `;
       default:
         return {};
-      // default:
-      //   return show
-      //     ? css`
-      //         transform: translateY(0);
-      //         opacity: 100;
-      //       `
-      //     : css`
-      //         transform: translateY(4rem);
-      //         opacity: 0;
-      //       `;
     }
   }}
 `;

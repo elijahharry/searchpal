@@ -10,6 +10,7 @@ import { AriaTitles } from "./AriaTitles";
 import { useTheme } from "../../hooks/useTheme";
 
 import {
+  ThemeProvider,
   Container,
   Backdrop,
   ModalContainer,
@@ -18,7 +19,7 @@ import {
 } from "./Search.styled";
 
 import { Error } from "./Error/Error";
-import { usePaletteVariables } from "../../hooks/usePalette";
+// import { usePaletteVariables } from "../../hooks/usePalette";
 
 export const Search = ({
   palette,
@@ -38,9 +39,10 @@ export const Search = ({
   const ref = useRef<HTMLDivElement>(null);
   useOnClickOutside(ref, props.onClose);
 
-  const colors = usePaletteVariables(palette, dark);
+  // const colors = usePaletteVariables(palette, dark);
 
-  const paletteVars = useTheme(theme, dark);
+  const userTheme = useTheme(theme, dark),
+    defaultTheme = useTheme(undefined, dark);
 
   const id = useUuid();
 
@@ -49,29 +51,30 @@ export const Search = ({
       <SearchProvider {...props} id={id} show={show}>
         <Children aria-hidden>{children}</Children>
         <Portal id={`${id}-portal`}>
-          <Container
-            role="dialog"
-            aria-labelledby={`${id}-heading`}
-            aria-modal
-            vars={paletteVars}
-          >
-            <AriaTitles onClose={props.onClose} />
-            <Backdrop show={show} aria-hidden />
-            <ModalContainer show={show}>
-              <Modal
-                ref={ref}
-                transitioning={transitioning}
-                show={show}
-                animate={animate}
-              >
-                <Field />
-                <Results
-                // key={`results-${render}`}
-                />
-                <Error />
-              </Modal>
-            </ModalContainer>
-          </Container>
+          <ThemeProvider backup={defaultTheme} theme={userTheme}>
+            <Container
+              role="dialog"
+              aria-labelledby={`${id}-heading`}
+              aria-modal
+            >
+              <AriaTitles onClose={props.onClose} />
+              <Backdrop show={show} aria-hidden />
+              <ModalContainer show={show}>
+                <Modal
+                  ref={ref}
+                  transitioning={transitioning}
+                  show={show}
+                  animate={animate}
+                >
+                  <Field />
+                  <Results
+                  // key={`results-${render}`}
+                  />
+                  <Error />
+                </Modal>
+              </ModalContainer>
+            </Container>
+          </ThemeProvider>
         </Portal>
       </SearchProvider>
     );

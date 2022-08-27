@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { classes, getVar, mediaQuery } from "../../../../../utils/css";
+import { classes, getVarClass, mediaQuery } from "../../../../../utils/css";
 import { Span } from "../../../Typography";
 
 export const Li = styled.li<{ active: boolean }>`
@@ -8,7 +8,7 @@ export const Li = styled.li<{ active: boolean }>`
   -ms-user-select: none;
   user-select: none;
   border-radius: 0.5rem;
-  ${(props) => props.active && { backgroundColor: "var(--selected-option)" }}
+  ${(props) => getVarClass(props.active ? "option-selected" : "option")}
   & a {
     text-decoration: none;
   }
@@ -60,7 +60,7 @@ export const Label = styled(Span)`
   display: block;
   flex: 1 1 auto;
   text-decoration: none;
-  ${getVar("text")}
+  ${getVarClass("text")}
   ${mediaQuery("md")} {
     ${classes.text.size.smd}
   }
