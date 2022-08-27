@@ -28,19 +28,11 @@
 
 <div dir="auto" align="center">
 
-<br />
-
 <h4>
-
-:bell: Announcements
-
-</h4>
-
-<h3>
 
 **Version 2 Released!** :partying_face: :tada:
 
-</h3>
+</h4>
 
 Replaced `palette` prop with an improved [Theme Object](#theme)
 
