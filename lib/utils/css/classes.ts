@@ -42,22 +42,7 @@ export const truncateJs = {
   whiteSpace: "nowrap",
 };
 
-export const bg = {
-  "background-color": "var(--spotlight-bg)",
-};
-
-export const border = {
-  "border-color": "var(--spotlight-border)",
-};
-
 export const text = {
-  color: {
-    primary: { color: "var(--spotlight-txt)" },
-    secondary: {
-      color: "var(--spotlight-txt)",
-      opacity: "var(--spotlight-text-light-opacity)",
-    },
-  },
   weight: {
     light: {
       "font-weight": "300",
@@ -96,15 +81,5 @@ export const text = {
       "font-size": "1.125rem",
       "line-height": "1.75rem",
     },
-  },
-};
-
-export const accent = {
-  bg: {
-    "background-color": "var(--spotlight-accent)",
-    color: "var(--spotlight-accent-txt)",
-  },
-  text: {
-    color: "var(--spotlight-accent)",
   },
 };

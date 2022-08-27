@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { getVar } from "../../../../../../utils/css";
+import { getVarClass } from "../../../../../../utils/css";
 
 export const Arrow = () => {
   return (
@@ -14,7 +14,7 @@ export const Arrow = () => {
 };
 
 const Container = styled.div`
-  ${getVar("text")}
+  ${getVarClass("text")}
 `;
 
 const Svg = styled.svg`

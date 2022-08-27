@@ -24,6 +24,26 @@
 <!-- <a style='font-weight: 500' href='#search'>Screenshots</a> | <a style='font-weight: 500' href='#option'>Installation</a> | ><a style='font-weight: 500' href='#basic-usage'>Usage</a> -->
 </div>
 
+<!-- <div dir='auto' align="center"> -->
+
+<div dir="auto" align="center">
+
+**Version 2 Released!** :partying_face: :tada:
+
+</h4>
+
+<sup>
+
+Replaced `palette` prop with an improved [Theme Object](#theme)
+
+</sup>
+
+</div>
+
+<br />
+
+<!-- </div> -->
+
 ## Screenshots <sub><sup>or see a [live demo](https://searchpal.elijahharry.com/) :point_left:</sup><sub>
 
 ![](https://searchpal.s3.us-east-2.amazonaws.com/preview-bordered.png)
@@ -151,19 +171,19 @@ The `Search` component has tons of props, all offering unique customizations. Th
 
 <!-- ## General -->
 
-| Prop                | Accepts                                                                                            | Default                                  | Description                                                                                                                                                                        |
-| ------------------- | -------------------------------------------------------------------------------------------------- | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **`open`**\*        | `boolean`                                                                                          |                                          | Open/close state of the search modal. Pass through `true` to open, `false` to close.                                                                                               |
-| **`onClose`**\*     | `() => void`                                                                                       |                                          | Function that flips the `open` prop to `false` when a user closes the search modal.                                                                                                |
-| `label`             | `string`                                                                                           | `"Search for anything..."`               | Label which displays as the search input's placeholder. Also utilized as an input label (only visible to screen readers).                                                          |
-| `algo`              | `'fuzz'`, `'exact'` or `'combo'`<br /><sub>[What are these?](#search-algorithms)</sub>             | `'combo'`                                | Select the search algorithm used to narrow results. [Learn more about these algorithms.](#search-algorithms)                                                                       |
-| `dark`              | `true`, `false` or `'user'`<br /><sub>See [example](#no-dynamic-light--dark--static-palette)</sub> | `'user'`                                 | Enforce a specific light / dark mode, or base it on user preference.                                                                                                               |
-| `palette`           | [Palette](#palette-object) or [Dynamic Palette](#dynamic-light--dark)                              | [View default palette](#default-palette) | Configure/customize all colors utilized throughout the component. Accepts a single [Palette](#palette-object) object, or seperate ones for light & dark modes.                     |
-| `labels`            | [Labels](#labels)                                                                                  | [View default labels](#labels-object)    | All other labels utilized throughout the component can be configured here. With the expecting of the `noResults` property, all of these are only visible to screen readers.        |
-| `startExpanded`     | `boolean`                                                                                          | `false`                                  | Do you want options to be shown when the search query is empty?                                                                                                                    |
-| `animate`           | `grow`, `fade` or `slide`                                                                          | `slide`                                  | Select the animation utilized when the Search appears/disappears.                                                                                                                  |
-| `previewBreakpoint` | `number`                                                                                           | `570` <sub>(570px)</sub>                 | Option previews would take up too much space on mobile devices, so by default they are hidden below 570px. If you'd like to change the breakpoint for this, you can via this prop. |
-| `link`              | [Link](#link)</sub>                                                                                |                                          | Custom component used to add anchors/routing to options and options. <br /><sub>**Note**: This will only be utilized if the option is provided an `href`.</sub>                    |
+| Prop                | Accepts                                                                                                                                                                                                                  | Default                               | Description                                                                                                                                                                                                                                                         |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`open`**\*        | `boolean`                                                                                                                                                                                                                |                                       | Open/close state of the search modal. Pass through `true` to open, `false` to close.                                                                                                                                                                                |
+| **`onClose`**\*     | `() => void`                                                                                                                                                                                                             |                                       | Function that flips the `open` prop to `false` when a user closes the search modal.                                                                                                                                                                                 |
+| `label`             | `string`                                                                                                                                                                                                                 | `"Search for anything..."`            | Label which displays as the search input's placeholder. Also utilized as an input label (only visible to screen readers).                                                                                                                                           |
+| `algo`              | `'fuzz'`, `'exact'` or `'combo'`<br /><sub>[What are these?](#search-algorithms)</sub>                                                                                                                                   | `'combo'`                             | Select the search algorithm used to narrow results. [Learn more about these algorithms.](#search-algorithms)                                                                                                                                                        |
+| `dark`              | `true`, `false` or `'user'`<br /><sub>See [example](#no-dynamic-light--dark--static-theme)</sub>                                                                                                                         | `'user'`                              | Enforce a specific light / dark mode, or base it on user preference.                                                                                                                                                                                                |
+| `theme`             | [Theme Object](#theme-object)<br /> <sub><sup>Or an **[inline function](#inline-function-subsup-must-return-a-theme-objecttheme-object-supsub)** you can use to access an initilized [Theme Object](#theme).</sup></sub> | [View default theme](#default-theme)  | Configure/customize all colors utilized throughout the search palette. Accepts a single, initialized [Theme Object](#theme-object) or an [inline function](#inline-function-subsup-must-return-a-theme-objecttheme-object-supsub) you can use to access/return one. |
+| `labels`            | [Labels](#labels)                                                                                                                                                                                                        | [View default labels](#labels-object) | All other labels utilized throughout the component can be configured here. With the expecting of the `noResults` property, all of these are only visible to screen readers.                                                                                         |
+| `startExpanded`     | `boolean`                                                                                                                                                                                                                | `false`                               | Do you want options to be shown when the search query is empty?                                                                                                                                                                                                     |
+| `animate`           | `grow`, `fade` or `slide`                                                                                                                                                                                                | `slide`                               | Select the animation utilized when the Search appears/disappears.                                                                                                                                                                                                   |
+| `previewBreakpoint` | `number`                                                                                                                                                                                                                 | `570` <sub>(570px)</sub>              | Option previews would take up too much space on mobile devices, so by default they are hidden below 570px. If you'd like to change the breakpoint for this, you can via this prop.                                                                                  |
+| `link`              | [Link](#link)</sub>                                                                                                                                                                                                      |                                       | Custom component used to add anchors/routing to options and options. <br /><sub>**Note**: This will only be utilized if the option is provided an `href`.</sub>                                                                                                     |
 
 ### Search Algorithms
 
@@ -175,97 +195,420 @@ Search comes with two seperate search algorithms (and one combination of the two
 | `fuzz`    | ![](https://searchpal.s3.us-east-2.amazonaws.com/fuzz.gif)                                                                                                                               | 'Fuzzy' search chunks will split each keyword into seperate, smaller chunks and individually compare them to the query, then compares scores between the options (only showing options within a score within close enough range of the option with the highest score). Essentially, users don't need to type everything perfectly to see relevant results. |
 | `combo`   | ![](https://searchpal.s3.us-east-2.amazonaws.com/combo.gif)                                                                                                                              | Combo initially performs an `exact` search, and in the event there are no matches, runs a `fuzz` search. Solid mix of both algos, which is why this is the **default search algorithm**.                                                                                                                                                                   |
 
-### Color Palette
+### Theme
 
-Customize the Search's color palette. You're able to choose between setting a static or dynamic (light/dark) color scheme.
+Customize the theme (colors, borders, shadows, etc) of the search palette via the [Theme Object](#theme-object).
 
-#### Palette Object
+![](https://searchpal.s3.us-east-2.amazonaws.com/releases/2/theme-2.gif)
 
-In the `Accepts` column, **`Color` signifies a valid color value (`RGB`, `RGBA`, `Hexadecimal`, `HSL`, etc) in the form of a `string`**.
+#### Theme Examples
 
-| Key              | Accepts                                    | Description                                                                                                                                                                                                                                                               |
-| ---------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `accent`         | `Color` or `{ color: Color, text: Color }` | Accent color utilized in some places of the modal (primarily buttons). The default overlaid text color is white (`#fff`). If you want to change the color of overlaid text, pass through an object with the following keys: `text` (text color) & `color` (accent color). |
-| `bg`             | `Color`                                    | Background color of the modal.                                                                                                                                                                                                                                            |
-| `text`           | `Color`                                    | Color of nearly all text (ignoring text overlaid on `accent` color) within the modal.                                                                                                                                                                                     |
-| `border`         | `Color`                                    | Color of borders used throughout modal.                                                                                                                                                                                                                                   |
-| `shadow`         | `Color`                                    | Shadow color of the modal.                                                                                                                                                                                                                                                |
-| `optionSelected` | `Color`                                    | Background color of an option when it is highlighted/selected.                                                                                                                                                                                                            |
-| `backdrop`       | `Color`                                    | Background color of the backdrop overlay.                                                                                                                                                                                                                                 |
+##### Inline Function <sub><sup> Must Return a [Theme Object](#theme-object)! </sup></sub>
 
-#### Default Palette
-
-By default, the palette is chosen from the dark/light versions below depending on the user's dark mode preferences. [See how to force a singular palette/mode](#no-dynamic-light--dark--static-palette).
-
-```js
-{
-  light {
-    bg: "#fff",
-    text: "#27272a",
-    border: "#f2f3f6",
-    backdrop: "#e5e7eb",
-    shadow: "rgba(156,163,175,.2)",
-    optionSelected: "#f4f4f5",
-    accent: {
-      color: "#3b82f6",
-      text: "#fff",
-    },
-  },
-  dark: {
-    bg: "#1f2937",
-    text: "#fff",
-    border: "#374151",
-    backdrop: "#111827",
-    shadow: "rgba(31,41,55,0.8)",
-    optionSelected: "#4b5563",
-    accent: {
-      color: "#3b82f6",
-      text: "#fff",
-    },
-  },
-}
-```
-
-#### Palette Examples
-
-##### Dynamic Light / Dark
+<sub>An inline function in the `theme` prop will provided you with access to an initialized [Theme Object](#theme-object).
 
 ```tsx
 <Search
-  dark="user" // Default value, decides light/dark via a media query
-  palette={{
-    dark: {
-      backdrop: "rgba(0,0,0,.5)",
-      accent: "#4a8fff",
-    },
-    light: {
-      backdrop: "rgba(180,180,180,.5)",
-      accent: {
-        color: "#b8d3ff",
-        text: "#002663",
-      },
-    },
+  theme={(theme) => {
+    theme.accent("lightblue", "darkblue");
+    theme.border(null, 2);
+    theme.light.backdrop("rgb(240,240,240)", 0.8);
+    theme.dark.backdrop("navy", "60%");
+    return theme;
   }}
 />
 ```
 
-##### No Dynamic Light & Dark / Static Palette
+##### Imported [Theme Object](#theme-object)
 
-If you'd like to force light / dark mode, you can either pass a boolean (`true` or `false`) through the Search's `dark` prop, or pass through a static [Palette](#palette-object) object. If you choose to use a static [Palette](#palette-object) and are not using it alongside the `dark` prop, make sure it is complete and all properties/colors are provided. Otherwise, the missing properties will be pulled from the [default palette](#default-palette) above (corresponding with the active light/dark mode).
-
-<sub>Force light / dark mode:</sub>
+<sub>Import the [Theme Object](#theme-object) to initialize/configure it whereever you'd like. You can pass your theme through the contructor, or configure it via the [built-in methods](#theme-methods).</sub>
 
 ```tsx
-// Force light mode
-<Search dark={false} />
-// Force dark mode
+import { Search, Theme } from "searchpal"
+
+const theme = new Theme({ shadow: '0 5px 20px rgba(0, 0, 0, .5)', light: { accent: 'orange' }, dark: {accent: 'red'} })
+
+theme.text('rgb(80, 80, 80)', 'rgb(155, 155, 155)')
+
+theme.light.option.selected('orange', '#fff')
+theme.dark.option.selected('red', '#fff')
+
+<Search theme={theme} />
+```
+
+#### Theme Object
+
+The Theme object stores your settings internally and provides you with methods which you can utilize to adjust the light & versions of your theme (or both at once).
+
+##### Theme Methods
+
+**All** of the following methods can be called specifically on the light & dark versions of your theme, or globally to adjust both versions simultaneously.
+
+###### Call Globally &nbsp; <sub><sup>Writes to both light & dark versions!</sup><sub>
+
+```tsx
+theme.method("#000");
+```
+
+###### Call on Light / Dark Version
+
+```tsx
+theme.method.light('#fff')
+theme.method.dark('#000)
+```
+
+The methods can be viewed below, alongside an example of their usage & a brief description of their purpose:
+
+<table>
+<tr>
+<th>
+Method
+</th>
+<th>
+Usage & Purpose
+</td>
+</tr>
+
+<tr>
+<th>
+accent
+</th>
+<td>
+
+```tsx
+theme.accent(Color, TextColor);
+```
+
+`Color` is the primary accent color utilized throughout the search modal.
+
+`TextColor` is for adjusting the color of text overlaid ontop of the accent (i.e. in [Buttons](#button)).
+
+<sub>
+
+**Using `theme.accent()`**:
+
+```tsx
+// Global
+theme.accent("lightblue", "darkblue");
+// Light & Dark
+theme.light.accent("#00165a", "#fff");
+theme.dark.accent("red", "white");
+```
+
+</sub>
+
+</td>
+</tr>
+
+<tr>
+<th>
+bg
+</th>
+<td>
+
+```tsx
+theme.bg(BackgroundColor);
+```
+
+`BackgroundColor` is the background color of the entire search palette.
+
+<sub>
+
+**Using `theme.bg()`**:
+
+```tsx
+// Global
+theme.bg("#d3d3d3");
+// Light & Dark
+theme.light.bg("white");
+theme.dark.bg("#000080");
+```
+
+</sub>
+
+</td>
+</tr>
+
+<tr>
+<th>
+text
+</th>
+<td>
+
+```tsx
+theme.text(PrimaryColor, SecondaryColor);
+```
+
+`PrimaryColor` is the primary text color, `SecondaryColor` is the 'secondary' (faded/light) text color.
+
+<sub>
+
+**Using `theme.text()`**:
+
+```tsx
+// Global
+theme.text("rgb(60,60,60)", "rgb(200,200,200)");
+// Light & Dark
+theme.light.text("black", "grey");
+theme.dark.text("white", "#d3d3d3");
+```
+
+</sub>
+
+</td>
+</tr>
+
+<tr>
+<th>
+border
+</th>
+<td>
+
+```tsx
+theme.border(BorderColor, BorderWidth);
+```
+
+Border styles used on every bordered element you see within the search palette. `BorderColor` being the color & `BorderWidth` being the width.
+
+<sub>
+
+**Using `theme.border()`**:
+
+```tsx
+// Global
+theme.border("#000", 2); // 2px
+// Light & Dark
+theme.light.border("grey", ".2rem");
+theme.dark.border("transparent", 0);
+```
+
+</sub>
+</td>
+</tr>
+
+<tr>
+<th>
+shadow
+</th>
+<td>
+
+```tsx
+theme.shadow(BoxShadow);
+```
+
+Border styles used on every bordered element you see within the search palette. `BorderColor` being the color & `BorderWidth` being the width.
+
+<sub>
+
+**Using `theme.shadow()`**:
+
+```tsx
+// Global
+theme.shadow("0px 10px 10px rgb(150,150,150,.4)");
+// Light & Dark
+theme.light.shadow("0px 10px 10px 5px rgb(200,200,200,.5)");
+theme.dark.shadow("0px 10px 10px 5px rgb(0,0,0,.6)");
+```
+
+</sub>
+</td>
+</tr>
+
+<tr>
+<th>
+backdrop
+</th>
+<td>
+
+```tsx
+theme.backdrop(BackgroundColor, Opacity);
+```
+
+Adjusts the color/opacity of the backdrop _behind_ the modal, used to give it some contrast when it's floating above the rest of your app. `BackgroundColor` is the backdrop's color, and `Opacity` is it's opacity level (i.e. `.65`) when it is fully-opened.
+
+<sub>
+
+**Using `theme.backdrop()`**:
+
+```tsx
+// Global
+theme.backdrop("black", "30%");
+// Light & Dark
+theme.light.backdrop("#d3d3d3", ".6");
+theme.dark.backdrop("#00165a", "55%");
+```
+
+</sub>
+</td>
+</tr>
+
+<tr>
+<th>
+option
+</th>
+<td>
+
+The `theme.option` method can be used to edit the background/text colors of an [Option](#option) in the results list. You can use `theme.option` to edit both the **selected/highlighted** & **deselected** versions of the [Option](#option) element.
+
+<ul>
+
+<li>
+
+**Default Options:**
+
+```tsx
+theme.option(BackgroundColor, TextColor);
+```
+
+<sub>
+
+**Using `theme.option()`**:
+
+```tsx
+// Global
+theme.option("#d3d3d3", "darkblue");
+// Light & Dark
+theme.light.option("white", "#000");
+theme.dark.option("transparent", "#fff");
+```
+
+</sub>
+
+</li>
+<li>
+
+**Selected / Highlighted Options:**
+
+```tsx
+theme.option.selected(BackgroundColor, TextColor);
+```
+
+<sub>
+
+**Using `theme.option.selected()`**:
+
+```tsx
+// Global
+theme.option.selected("blue", "lightblue");
+// Light & Dark
+theme.light.option.selected("#000", "#fff");
+theme.dark.option.selected("#fff", "#000");
+```
+
+</sub>
+
+</li>
+</ul>
+
+</td>
+</tr>
+
+<tr>
+<th>
+backdrop
+</th>
+<td>
+
+```tsx
+theme.backdrop(BackgroundColor, Opacity);
+```
+
+Adjusts the color/opacity of the backdrop _behind_ the modal, used to give it some contrast when it's floating above the rest of your app. `BackgroundColor` is the backdrop's color, and `Opacity` is it's opacity level (i.e. `.65`) when it is fully-opened.
+
+<sub>
+
+**Using `theme.backdrop()`**:
+
+```tsx
+// Global
+theme.backdrop("black", "30%");
+// Light & Dark
+theme.light.backdrop("#d3d3d3", ".6");
+theme.dark.backdrop("#00165a", "55%");
+```
+
+</sub>
+</td>
+</tr>
+
+<tr>
+<th>
+set
+</th>
+<td>
+
+If you want to just pass through an non-nested object filled with your theme settings, you can do so with the `theme.set` method. This method accepts a [ThemeProperties](#) object.
+
+<sub>
+
+**Using `theme.set()`**:
+
+```tsx
+// Global
+theme.set({ text: "#d3d3d3", backdrop: "#000" });
+// Light & Dark
+theme.light.set({ accent: "red", borderColor: "rgb(240,240,240)" });
+theme.dark.set({ accent: "lightblue", accentText: "darkblue" });
+```
+
+</sub>
+</td>
+</tr>
+
+</table>
+
+#### Default Theme
+
+By default, the palette is chosen from the dark/light versions below depending on the user's dark mode preferences. [See how to force a singular palette/mode](#no-dynamic-light--dark--static-theme).
+
+```ts
+{
+  accent: "#3b82f6",
+  accentText: "#fff",
+  borderWidth: "1px",
+  light: {
+    background: "#fff",
+    text: "#27272a",
+    textSecondary: "#929294",
+    borderColor: "#f2f3f6",
+    shadow: "0 25px 50px -12px rgba(156,163,175,.2)",
+    backdrop: "#e5e7eb",
+    backdropOpacity: ".65",
+    optionBackground: "transparent",
+    optionText: "#27272a",
+    optionSelectedBackground: "#f4f4f5",
+    optionSelectedText: "#27272a",
+  },
+  dark: {
+    background: "#1f2937",
+    text: "#fff",
+    textSecondary: "#8e939a",
+    borderColor: "#393939",
+    shadow: "0 25px 50px -12px rgba(31,41,55,.8)",
+    backdrop: "#111827",
+    backdropOpacity: ".65",
+    optionBackground: "transparent",
+    optionText: "#fff",
+    optionSelectedBackground: "#4b5563",
+    optionSelectedText: "#fff",
+  },
+}
+```
+
+##### No Dynamic Light & Dark / Static Theme
+
+If you'd like to force light / dark mode, you can either pass a boolean (`true` or `false`) through the Search's `dark` prop, or pass through a [Theme Object](#theme-object) with **all colors globally overwritten** (otherwise, the missing properties will be pulled from the [default theme](#default-theme) above corresponding with the user's light/dark mode).
+
+<sub>Force **dark** mode:</sub>
+
+```tsx
 <Search dark />
 ```
 
-<sub>Static / singular [Palette](#palette-object):</sub>
+<sub>Force **light** mode:</sub>
 
 ```tsx
-<Search palette={{ accent: "blue", backdrop: "rgb(0,0,0,.5)" }} />
+<Search dark={false} />
 ```
 
 ### Labels

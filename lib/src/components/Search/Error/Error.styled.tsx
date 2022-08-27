@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { getBorder, getVar, mediaQuery } from "../../../../utils/css";
+import { getBorder, getVarClass, mediaQuery } from "../../../../utils/css";
 
 export const Container = styled.div<{
   show: boolean;
@@ -32,7 +32,7 @@ export const Alert = styled.div`
   color: #f11414;
   display: flex;
   align-items: flex-start;
-  /* border: 1px solid var(--spotlight-border); */
+  /* border: 1px solid var(--border); */
   margin: 0 auto;
   box-shadow: 0 25px 50px -12px #ff000010;
   border-radius: 0.5rem;
@@ -50,7 +50,7 @@ export const Title = styled.h3`
   font-weight: 500;
   font-size: 0.85rem;
   padding-right: 0.5rem;
-  /* ${getVar("text")}; */
+  /* ${getVarClass("text")}; */
   ${mediaQuery("sm")} {
     font-size: 0.95rem;
   }

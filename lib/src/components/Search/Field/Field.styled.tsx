@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { classes, getVar } from "../../../../utils/css";
+import { classes, getVarClass } from "../../../../utils/css";
 
 export const Container = styled.div`
   position: relative;
@@ -11,7 +11,7 @@ export const Container = styled.div`
 `;
 
 export const SvgIcon = styled.svg`
-  ${getVar("text-light")}
+  ${getVarClass("text-light")}
   height: 22px;
   width: 22px;
   stroke-width: 0;
@@ -23,7 +23,7 @@ export const InputContainer = styled.div`
   width: 100%;
   position: relative;
   height: auto;
-  ${getVar("text")}
+  ${getVarClass("text")}
 `;
 
 export const Input = styled.input`
@@ -36,9 +36,9 @@ export const Input = styled.input`
   display: block;
   width: 100%;
   box-sizing: border-box;
-  ${getVar("text")};
+  ${getVarClass("text")};
   &::placeholder {
-    ${getVar("text-light")}
+    ${getVarClass("text-light")}
   }
   &:focus {
     outline: none;

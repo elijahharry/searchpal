@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { classes, getVar } from "../../../utils/css";
+import { classes, getVarClass } from "../../../utils/css";
 
 const weights = classes.text.weight;
 const sizes = classes.text.size;
@@ -80,7 +80,7 @@ const getStyles = (props: TypographyProps) => {
   }
   const truncate = props?.truncate ? classes.truncateJs : {},
     sr = props["sr-only"] ? classes.srOnlyJs : {},
-    color = props.fade ? getVar("text-light") : getVar("text");
+    color = props.fade ? getVarClass("text-light") : getVarClass("text");
   return {
     // margin: "0",
     marginTop: 0,

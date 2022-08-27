@@ -1,17 +1,18 @@
-import { getChildComponentProps, isArray, isRenderable } from "../utils";
-// import {
-//   ReactElement,
-//   isValidElement,
-//   FunctionComponent,
-//   MouseEventHandler,
-// } from "react";
-import { arrString, isString, cn, isFunction, isObject } from "../utils";
-import { DetailProps, OptionProps, Renderable } from "./gen";
-import { Detail } from "../src/components/Detail";
-import { getRenderable } from "../utils/renderable";
-import { isBoolean, isStringArray } from "../utils/is/is";
-
-// Constructors
+import {
+  arrString,
+  isString,
+  cn,
+  isFunction,
+  isObject,
+  isBoolean,
+  isStringArray,
+  getChildComponentProps,
+  isArray,
+  isRenderable,
+} from "../../utils";
+import { DetailProps, OptionProps, Renderable } from "./../gen";
+import { Detail } from "../../src/components/Detail";
+import { getRenderable } from "../../utils/renderable";
 
 export class OptionError extends Error {
   prop: string;

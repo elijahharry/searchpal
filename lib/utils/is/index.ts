@@ -8,4 +8,5 @@ export {
   isBoolean,
   isRenderable,
   isError,
+  isStringArray,
 } from "./is";

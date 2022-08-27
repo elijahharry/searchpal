@@ -1,12 +1,18 @@
 import styled, { css } from "styled-components";
-import { mediaQuery, getVar } from "../../../utils/css";
+import { mediaQuery, getVarClass } from "../../../utils/css";
 import { ColorVars, SearchProps } from "../../../types";
 
-export const Container = styled.div<{ vars: ColorVars }>`
+export const Container = styled.div`
   position: relative;
   z-index: 50;
-  --spotlight-text-light-opacity: 0.5;
-  ${(props) => ({ ...props.vars })};
+`;
+
+export const ThemeProvider = styled.div<{
+  backup: ColorVars;
+  theme: ColorVars;
+}>`
+  ${(props) => props.backup}
+  ${(props) => props.theme}
 `;
 
 export const Backdrop = styled.span<{ show: boolean }>`
@@ -18,13 +24,13 @@ export const Backdrop = styled.span<{ show: boolean }>`
   z-index: 40;
   transition-property: opacity;
   display: block;
-  background-color: var(--spotlight-backdrop);
+  background-color: var(--backdrop);
   ${(props) =>
     props.show
       ? css`
           transition-duration: 200ms;
           transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
-          opacity: 0.5;
+          opacity: var(--backdrop-opacity);
         `
       : css`
           transition-duration: 300ms;
@@ -81,11 +87,12 @@ export const Modal = styled.div<{
   width: 100%;
   max-width: 48rem;
   border-radius: 1rem;
-  border: 1px solid var(--spotlight-border);
+  border: 1px solid var(--border);
   margin: 0 auto;
-  box-shadow: 0 25px 50px -12px var(--spotlight-shadow);
-  ${getVar("text")}
-  ${getVar("bg")}
+  box-shadow: 0 25px 50px -12px var(--shadow);
+  ${getVarClass("text")}
+  ${getVarClass("bg")}
+  ${getVarClass("shadow")}
   ${(props) =>
     props.transitioning &&
     css`
@@ -124,16 +131,6 @@ export const Modal = styled.div<{
             `;
       default:
         return {};
-      // default:
-      //   return show
-      //     ? css`
-      //         transform: translateY(0);
-      //         opacity: 100;
-      //       `
-      //     : css`
-      //         transform: translateY(4rem);
-      //         opacity: 0;
-      //       `;
     }
   }}
 `;

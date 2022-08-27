@@ -6,14 +6,14 @@ export const Container = styled.div`
   /* width: 50%; */
   flex-direction: column;
   justify-content: space-between;
-  --spotlight-preview-pad: 1rem;
+  ---preview-pad: 1rem;
   min-height: 100%;
   ${getBorder("left")}
 `;
 export const Top = styled.div`
   width: auto;
   flex-grow: 1.1;
-  padding: var(--spotlight-preview-pad);
+  padding: var(---preview-pad);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,8 +36,8 @@ export const DetailList = styled.dl`
   -moz-column-gap: 0.75rem;
   column-gap: 0.75rem;
   row-gap: 0.5rem;
-  padding: var(--spotlight-preview-pad);
-  padding-bottom: calc(var(--spotlight-preview-pad) / 2);
+  padding: var(---preview-pad);
+  padding-bottom: calc(var(---preview-pad) / 2);
   /* padding-bottom: 0; */
   font-size: 0.875rem;
   line-height: 1.25rem;
@@ -59,7 +59,7 @@ export const Divider = styled.hr`
 `;
 
 export const Bottom = styled.div`
-  padding: var(--spotlight-preview-pad);
+  padding: var(---preview-pad);
   & a {
     text-decoration: none;
   }

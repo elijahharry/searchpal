@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { classes, getVar, mediaQuery } from "../../../../../utils/css";
+import { classes, getVarClass, mediaQuery } from "../../../../../utils/css";
 import { Span } from "../../../Typography";
 
 export const Li = styled.li<{ active: boolean }>`
@@ -8,8 +8,7 @@ export const Li = styled.li<{ active: boolean }>`
   -ms-user-select: none;
   user-select: none;
   border-radius: 0.5rem;
-  ${(props) =>
-    props.active && { backgroundColor: "var(--spotlight-selected-option)" }}
+  ${(props) => getVarClass(props.active ? "option-selected" : "option")}
   & a {
     text-decoration: none;
   }
@@ -32,10 +31,9 @@ export const Media = styled.div<{ active: boolean; showPreview: boolean }>`
   flex-shrink: 0;
   overflow: hidden;
   border-radius: 9999px;
-  --spotlight-avatar-outline: ${(props) =>
-    props.active ? "#fff" : "var(--spotlight-border)"};
+  ---avatar-outline: ${(props) => (props.active ? "#fff" : "var(--border)")};
   /* box-shadow: 0 0 0 1px */
-  /* ${(props) => (props.active ? "#fff" : "var(--spotlight-border)")}; */
+  /* ${(props) => (props.active ? "#fff" : "var(--border)")}; */
   margin-right: 0.75rem;
   width: 1.5rem;
   height: 1.5rem;
@@ -62,7 +60,7 @@ export const Label = styled(Span)`
   display: block;
   flex: 1 1 auto;
   text-decoration: none;
-  ${getVar("text")}
+  ${getVarClass("text")}
   ${mediaQuery("md")} {
     ${classes.text.size.smd}
   }

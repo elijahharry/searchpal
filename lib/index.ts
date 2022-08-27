@@ -12,5 +12,7 @@ export type {
   MediaProps,
   ButtonComponent,
   ButtonProps,
+  Theme,
+  ThemeProperties,
 } from "./types";
 export { useDarkMode as usePrefersDark, Search, Option, Detail } from "./src";
