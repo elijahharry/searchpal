@@ -1,2 +1,2 @@
 export * from "./Searchable";
-export * from "./theme";
+export * from "./Theme";

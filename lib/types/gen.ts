@@ -14,7 +14,7 @@ import {
   PreviewComponent,
 } from "./components";
 // import { r } from "./constructors/theme";
-import { Themers, Theme, ThemeCreator } from "./constructors/theme";
+import { Theme } from "./constructors";
 
 export type RenderableItem =
   | string
@@ -60,10 +60,7 @@ export type SearchProps = {
   };
   algo?: SearchMode;
   previewBreakpoint?: number;
-  theme?:
-    | Theme
-    | Theme[]
-    | ((theme: ThemeCreator, themers: Themers) => Theme | Theme[]);
+  theme?: Theme | ((theme: Theme) => Theme);
 };
 
 export type SearchLabels = {

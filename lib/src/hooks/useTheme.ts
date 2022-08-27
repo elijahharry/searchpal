@@ -1,20 +1,11 @@
 import { useMemo } from "react";
 
-import {
-  SearchProps,
-  ThemeVariant,
-  themers,
-  theme,
-  getThemes,
-} from "../../types";
+import { SearchProps, Theme } from "../../types";
 
 import { useDarkMode } from "./useDarkMode";
 import { isFunction } from "../../utils";
 
-const defaults = {
-  light: theme("light"),
-  dark: theme("dark"),
-};
+const backup = new Theme();
 
 export const useTheme = (
   input: SearchProps["theme"],
@@ -26,42 +17,18 @@ export const useTheme = (
     [userDark, darkPreference]
   );
 
-  const themes = useMemo(() => {
-    const variants = getThemes(
-      isFunction(input) ? input(theme, themers) : input
-    );
-    // Add darkPreference === "user" to if statement for autofill
-    if (variants.length === 0) {
-      const checkVariant = (variant: ThemeVariant) => {
-        for (const theme of variants) {
-          if (theme.variant === variant) {
-            return true;
-          }
-        }
-        return false;
-      };
-      const modes: ThemeVariant[] = ["dark", "light"];
-      for (const mode of modes) {
-        if (!checkVariant(mode)) variants.push(defaults[mode]);
+  const theme = useMemo(() => {
+    if (input) {
+      const obj = isFunction(input) ? input(new Theme()) : input;
+      if (obj instanceof Theme) {
+        return obj;
       }
     }
-    return variants;
+    return backup;
   }, [input]);
 
-  const active = useMemo(() => {
-    const variant: ThemeVariant = dark ? "dark" : "light";
-    for (const theme of themes) {
-      if (theme.variant === variant) {
-        return theme;
-      }
-    }
-    if (themes[0]) return themes[0];
-    return dark ? defaults.dark : defaults.light;
-  }, [themes, dark]);
-
-  if (active) {
-    return active.toVariables();
+  if (dark) {
+    return theme.dark.toVariables();
   }
-
-  return defaults[dark ? "dark" : "light"].toVariables();
+  return theme.light.toVariables();
 };

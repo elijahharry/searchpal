@@ -1,6 +1,6 @@
 // import React from "react";
 
-import { Search, Option, Detail } from "@searchpal/dev";
+import { Search, Option, Detail } from "@searchpal/build";
 import { useState } from "react";
 import { users } from "./constants/users";
 
@@ -9,34 +9,29 @@ function App() {
 
   return (
     <div>
-      {/* <ButtonSpotlight /> */}
       <Search
         open={open}
         onClose={() => setOpen(false)}
         startExpanded
-        theme={(
-          theme,
-          { accent, border, shadow, option, backdrop, background, text }
-        ) => [
-          theme(
-            "dark",
-            // accent("yellow", "red"),
-            // border("#000", 5),
-            // shadow("10px 10px 100px red"),
-            // option(true, "blue", "lightblue"),
-            backdrop("black", 0.9),
-            // background("#fff"),
-            text("red", "lightred")
-          ),
-        ]}
+        theme={(theme) => {
+          // theme.accent("red", "whitesmoke");
+          // theme.option("blue");
+          // theme.light.option.selected("red");
+          theme.set({
+            accent: "red",
+            borderColor: "gray",
+            light: { borderColor: "#fff" },
+            optionSelectedBackground: "red",
+            optionSelectedText: "white",
+          });
+          return theme;
+        }}
       >
         {users.map((user) => (
           <Option
             label={user.name}
-            // label={20000}
             sublabel={user.email}
             key={user.id}
-            // @ts-ignore
             img={{ src: user.avatar }}
             cta={"Testing"}
             keywords={(interpret) =>
@@ -61,3 +56,11 @@ function App() {
 }
 
 export default App;
+
+// const test = {
+//   default: function (red: any) {
+//     console.log(red);
+//   },
+// };
+
+// console.log(test("balls"));
