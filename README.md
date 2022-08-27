@@ -32,7 +32,11 @@
 
 </h4>
 
+<sup>
+
 Replaced `palette` prop with an improved [Theme Object](#theme)
+
+</sup>
 
 </div>
 
