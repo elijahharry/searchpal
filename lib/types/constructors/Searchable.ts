@@ -25,7 +25,6 @@ export class OptionError extends Error {
         this.name === "Detail Error" ? " on Detail" : ""
       }.`;
     if (this.message) message += ` ${this.message}`;
-    // if (this.label) message += ` (Option: ${this.label})`;
     message += "\n\n";
     if (this.fatal) {
       message += "Fatal: ";
@@ -108,7 +107,6 @@ export class Searchable {
     }: OptionProps & { id: string } // existingIds: string[]
   ) {
     this.tinyErrors = [];
-    // const tinyErr = (err: string) => this.tinyErrors.push(err);
     const minorError = (...args: ConstructorParameters<typeof OptionError>) =>
       this.tinyErrors.push(
         new OptionError(args[0], { ...args[1], label: label })
@@ -336,8 +334,6 @@ export class Searchable {
         }
       }
     }
-
-    // existingIds.push(id);
   }
 }
 

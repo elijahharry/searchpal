@@ -34,7 +34,6 @@ type Data = {
 };
 
 export interface SearchValues {
-  // data: Data;
   setData: Dispatch<SetStateAction<Data>>;
   options: Searchable[];
   active: string | null;
@@ -141,7 +140,6 @@ export function SearchProvider({
         .sort((a, b) => index(a.id) - index(b.id));
 
     return searchResults.slice(0, 10);
-    // return sort;
   }, [query, options, algo, startExpanded]);
 
   const [active, setActive] = useState<string | null>(null);

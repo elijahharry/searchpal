@@ -37,7 +37,6 @@ export const Field = () => {
         <Input
           type="text"
           placeholder={label}
-          // placeholder="Testing"
           ref={inputRef}
           role="combobox"
           aria-expanded={options.length > 0}

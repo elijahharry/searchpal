@@ -19,7 +19,6 @@ import {
 } from "./Search.styled";
 
 import { Error } from "./Error/Error";
-// import { usePaletteVariables } from "../../hooks/usePalette";
 
 export const Search = ({
   palette,
@@ -38,8 +37,6 @@ export const Search = ({
 
   const ref = useRef<HTMLDivElement>(null);
   useOnClickOutside(ref, props.onClose);
-
-  // const colors = usePaletteVariables(palette, dark);
 
   const userTheme = useTheme(theme, dark);
   const defaultTheme = useTheme(undefined, dark);
