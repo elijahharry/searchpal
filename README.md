@@ -30,7 +30,9 @@
 
 <div dir="auto" align="center">
 
-**Version 2 Released!** :partying_face: :tada:
+<h4>
+
+**Version 2 Released!** :tada:
 
 </h4>
 
