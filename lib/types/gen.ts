@@ -44,6 +44,10 @@ export type SearchPalette = {
   backdropOpacity?: number;
 };
 
+export type Searcher = (
+  query: string
+) => ReactNode | void | Promise<ReactNode | void>;
+
 export type SearchProps = {
   open: boolean;
   onClose: () => void;
@@ -62,9 +66,7 @@ export type SearchProps = {
   algo?: SearchMode;
   previewBreakpoint?: number;
   theme?: Theme | ((theme: Theme) => Theme);
-  children?:
-    | ReactNode
-    | ((query: string) => ReactNode | void | Promise<ReactNode | void>);
+  children?: ReactNode | Searcher;
 };
 
 export type SearchLabels = {

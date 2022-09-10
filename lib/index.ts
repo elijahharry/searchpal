@@ -13,6 +13,7 @@ export type {
   ButtonComponent,
   ButtonProps,
   ThemeProperties,
+  Searcher,
 } from "./types";
 export { Theme } from "./types";
 export { useDarkMode as usePrefersDark, Search, Option, Detail } from "./src";
