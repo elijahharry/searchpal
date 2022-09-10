@@ -124,7 +124,7 @@ export function SearchProvider({
   const results = useMemo(() => {
     if (custom) {
       if (!query) return [];
-      return options;
+      return options.slice(0, 10);
     }
     if (!query) {
       if (startExpanded) {
