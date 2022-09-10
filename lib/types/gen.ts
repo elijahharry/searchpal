@@ -5,6 +5,7 @@ import {
   CSSProperties,
   ReactFragment,
   MouseEvent,
+  ReactNode,
 } from "react";
 import {
   ArrowComponent,
@@ -61,6 +62,9 @@ export type SearchProps = {
   algo?: SearchMode;
   previewBreakpoint?: number;
   theme?: Theme | ((theme: Theme) => Theme);
+  children?:
+    | ReactNode
+    | ((query: string) => ReactNode | void | Promise<ReactNode | void>);
 };
 
 export type SearchLabels = {
