@@ -38,7 +38,7 @@
 
 <sup>
 
-Now supports custom async search functions. [See the full release note]().
+Now supports custom async search functions. [See the full release note](https://github.com/elijahharry/searchpal/releases/tag/diy-search).
 
 </sup>
 
@@ -152,7 +152,16 @@ const UsersSearch = ({ users, session }) => {
 
 ## Custom Search
 
-`searchpal` supports your own custom search functions (synchronous or asynchronous). [See how](#custom-search-function).
+```tsx
+<Search>
+  {async (query) => {
+    const options = await /* Your custom searcher here! */
+    return options.map((option) => <Option {..option} />)
+  }}
+</Search>
+```
+
+Want or need to handle your own searches elsewhere? `searchpal` now supports your own custom, async search functions. [Learn more](#custom-search-function).
 
 ---
 
