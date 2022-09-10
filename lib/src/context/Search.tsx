@@ -27,6 +27,8 @@ import {
   cn,
   SearchOption,
 } from "../../utils";
+import { useSearchChildren } from "../hooks/useSearchChildren";
+import { Hidden } from "./Search.styled";
 
 type Data = {
   options: Searchable[];
@@ -52,6 +54,8 @@ export interface SearchValues {
   breakpoints: SearchBreakpoints;
   error: string | null;
   link?: LinkComponent;
+  loading: boolean;
+  custom: boolean;
 }
 
 type SearchIds = {
@@ -101,21 +105,27 @@ export function SearchProvider({
   labels: reqLabels,
   algo = "combo",
   previewBreakpoint = 570,
+  input,
 }: PropsWithChildren<
   Omit<SearchProps, "color" | "searches" | "children"> & {
     show: boolean;
     id: string;
   }
->) {
+> & { input: SearchProps["children"] }) {
   const [query, setQuery] = useState("");
 
-  // const options = useOptionElements(optionsInput);
+  const [elements, custom, loading] = useSearchChildren(input, query);
+
   const [{ options, errors }, setData] = useState<Data>({
     options: [],
     errors: [],
   });
 
   const results = useMemo(() => {
+    if (custom) {
+      if (!query) return [];
+      return options;
+    }
     if (!query) {
       if (startExpanded) {
         return options.slice(0, 10);
@@ -140,7 +150,7 @@ export function SearchProvider({
         .sort((a, b) => index(a.id) - index(b.id));
 
     return searchResults.slice(0, 10);
-  }, [query, options, algo, startExpanded]);
+  }, [query, options, algo, startExpanded, custom]);
 
   const [active, setActive] = useState<string | null>(null);
 
@@ -174,6 +184,7 @@ export function SearchProvider({
   };
 
   const suggestion = useMemo(() => {
+    if (custom) return null;
     if (query && results[0]) {
       if (isString(results[0].label)) {
         const label = results[0].label,
@@ -185,7 +196,7 @@ export function SearchProvider({
       }
     }
     return null;
-  }, [results, query]);
+  }, [results, query, custom]);
 
   const selectSuggestion = () =>
     suggestion?.label && query !== suggestion?.label && setSuggested();
@@ -334,8 +345,11 @@ export function SearchProvider({
             : "",
         options: results,
         setData,
+        loading,
+        custom,
       }}
     >
+      <Hidden>{elements}</Hidden>
       {children}
     </SearchContext.Provider>
   );

@@ -41,9 +41,6 @@
     ]
   },
   "devDependencies": {
-    "@craco/craco": "^7.0.0-alpha.7",
-    "craco-alias": "^3.0.1",
-    "customize-cra": "^1.0.0",
     "react-app-alias": "^2.2.1",
     "react-app-alias-ex": "^2.1.0",
     "react-app-rewired": "^2.2.1"

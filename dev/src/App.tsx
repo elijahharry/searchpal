@@ -9,29 +9,18 @@ function App() {
 
   return (
     <div>
-      <Search
-        open={open}
-        onClose={() => setOpen(false)}
-        startExpanded
-        theme={(theme) => {
-          theme.accent("red", "whitesmoke");
-          theme.option("blue");
-          theme.light.option.selected("red");
-          theme.set({
-            accent: "#1c4bd6",
-            accentText: "#fff",
-            // accentText: "#18308f",
-            background: "#1a2654",
-            borderColor: "#29366d",
-            optionSelectedBackground: "#3250ab",
-            optionSelectedText: "#ffffff",
-            backdrop: "#002477",
-            backdropOpacity: ".8",
-            shadow: "0 10px 20px 5px #0d1a6630",
-          });
-          return theme;
+      <Search open={open} onClose={() => setOpen(false)} startExpanded>
+        {async (query) => {
+          await delay();
+          if (query.includes("hello")) return;
+          return users.map((u) => (
+            <Option label={`${query} ${u.name}`}>
+              <Detail value="Test" label="Test" />
+            </Option>
+          ));
         }}
-      >
+      </Search>
+      {/* <Search open={open} onClose={() => setOpen(false)}>
         {users.map((user) => (
           <Option
             label={user.name}
@@ -55,9 +44,12 @@ function App() {
             )}
           </Option>
         ))}
-      </Search>
+      </Search> */}
     </div>
   );
 }
+
+const delay = async () =>
+  await new Promise((resolve) => setTimeout(resolve, 200));
 
 export default App;

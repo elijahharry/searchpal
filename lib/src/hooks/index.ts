@@ -8,3 +8,4 @@ export * from "./useFocus";
 export * from "./useDarkMode";
 export * from "./useRect";
 export * from "./useUuid";
+export * from "./useSearchChildren";

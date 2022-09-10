@@ -32,13 +32,13 @@
 
 <h4>
 
-**Version 2 Released!** :tada:
+**Version 2.1 Released** :boom:
 
 </h4>
 
 <sup>
 
-Replaced `palette` prop with an improved [Theme Object](#theme). See the full [release note](https://github.com/elijahharry/searchpal/releases/tag/themes).
+Now supports custom async search functions. [See the full release note]().
 
 </sup>
 
@@ -150,6 +150,10 @@ const UsersSearch = ({ users, session }) => {
 };
 ```
 
+## Custom Search
+
+`searchpal` supports your own custom search functions (synchronous or asynchronous). [See how](#custom-search-function).
+
 ---
 
 # Components
@@ -188,6 +192,90 @@ The `Search` component has tons of props, all offering unique customizations. Th
 | `animate`           | `grow`, `fade` or `slide`                                                                                                                                                                                                | `slide`                               | Select the animation utilized when the Search appears/disappears.                                                                                                                                                                                                   |
 | `previewBreakpoint` | `number`                                                                                                                                                                                                                 | `570` <sub>(570px)</sub>              | Option previews would take up too much space on mobile devices, so by default they are hidden below 570px. If you'd like to change the breakpoint for this, you can via this prop.                                                                                  |
 | `link`              | [Link](#link)</sub>                                                                                                                                                                                                      |                                       | Custom component used to add anchors/routing to options and options. <br /><sub>**Note**: This will only be utilized if the option is provided an `href`.</sub>                                                                                                     |
+
+### Custom Search Function
+
+Passing through your own custom searcher can be done so easily, and is 100% recommended over the included search algorithms when your users need to search through tons of data.
+
+Simply add an asyncronhous function which returns a `ReactNode` as the child of the `Search` component. Map through the search results and include them as [Option](#option) components within the `ReactNode` (or don't, if there are no results). Use your function's first arguement to access the user's query.
+
+**Your function will only run when the query changes.** It will saved in a `ref` that will exclusively have its most recently-saved version called upon when necessary. You can change the function and `searchpal` will update the `ref`, but these changes won't be reflected until the user updates their query.
+
+#### Inline Custom Search Function
+
+```tsx
+import { Search, Option, Detail } from "searchpal";
+import Avatar from "../Avatar";
+
+const CustomSearch = ({ open, onClose }) => {
+  return (
+    <Search open={open} onClose={onClose}>
+      {async (query) => {
+        try {
+          const res = await fetch(`YOUR_API/search?`, { method: "GET" });
+          // Example with a singular option type...
+          const { results } = res.json();
+          return results.map(({ label, avatar, ...rest }, i) => (
+            <Option
+              label={label}
+              media={<Avatar src={avatar} key={i.toString()} />}
+              {...rest}
+            />
+          ));
+          // Example with multiple option types...
+          const { users, companies } = res.json();
+          return (
+            <>
+              {users.map((user) => (
+                <Option label={user.name} sublabel={user.email} key={user.id}>
+                  <Detail label="Joined" value={user.joined} />
+                </Option>
+              ))}
+              {companies.map((company) => (
+                <Option
+                  label={company.name}
+                  sublabel={company.tagline}
+                  img={{ src: company.logo }}
+                >
+                  {company.locations.map((location, i) => (
+                    <Detail
+                      label={`Location #${i + 1}`}
+                      value={`${location.city}, ${location.state}`}
+                    />
+                  ))}
+                </Option>
+              ))}
+            </>
+          );
+        } catch (e) {
+          console.error(e);
+          // Returning nothing will show no reuslts for that query (as would returning null, false, void or JSX without a single <Option />)
+        }
+      }}
+    </Search>
+  );
+};
+```
+
+#### External Custom Search Function
+
+```tsx
+import { Search, Option } from "searchpal";
+
+const searchUsers = async (query: string) => {
+  const res = await fetch("...");
+  const { options } = await res.json();
+  return options.map((props) => <Option {...props} />);
+};
+
+const CustomSearch = ({ open, onClose }) => {
+  return (
+    <Search open={open} onClose={onClose}>
+      {searchUsers}
+    </Search>
+  );
+};
+```
 
 ### Search Algorithms
 

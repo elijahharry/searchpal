@@ -1,7 +1,7 @@
 import { isBoolean } from "../../../utils";
 import { Portal } from "../Portal";
 import { useAnimatedRender, useOnClickOutside, useUuid } from "../../hooks";
-import React, { useRef, useState, useEffect, PropsWithChildren } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Results } from "./Results";
 import { SearchProps } from "../../../types";
 import { SearchProvider } from "../../context";
@@ -15,7 +15,6 @@ import {
   Backdrop,
   ModalContainer,
   Modal,
-  Children,
 } from "./Search.styled";
 
 import { Error } from "./Error/Error";
@@ -27,7 +26,7 @@ export const Search = ({
   children,
   theme,
   ...props
-}: PropsWithChildren<SearchProps>) => {
+}: SearchProps) => {
   const [open, setOpen] = useState(false);
   useEffect(() => {
     if (isBoolean(props.open)) setOpen(props.open);
@@ -45,8 +44,7 @@ export const Search = ({
 
   if (render && id) {
     return (
-      <SearchProvider {...props} id={id} show={show}>
-        <Children aria-hidden>{children}</Children>
+      <SearchProvider {...props} id={id} show={show} input={children}>
         <Portal id={`${id}-portal`}>
           <ThemeProvider backup={defaultTheme} theme={userTheme}>
             <Container

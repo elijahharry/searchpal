@@ -22,6 +22,8 @@ export const Results = () => {
     ids,
     enableHover,
     show,
+    loading,
+    custom,
     labels: { results: resultsLabel, noResults },
   } = useSearch();
   const [ref, { height }] = useRect();
@@ -50,6 +52,31 @@ export const Results = () => {
     return null;
   }, [options, activeId]);
 
+  const [expanded, setExpanded] = useState<{
+    options: typeof options;
+    open: boolean;
+  }>({
+    options: options,
+    open: options.length > 0 || query ? true : false,
+  });
+
+  useEffect(() => {
+    if (custom) {
+      if (!query) {
+        console.log("q: query");
+        setExpanded({ options: [], open: false });
+        return;
+      }
+      if (loading) return;
+      setExpanded({ options, open: true });
+      return;
+    }
+    setExpanded({
+      options,
+      open: options.length > 0 || query ? true : false,
+    });
+  }, [query, options, custom, loading]);
+
   return (
     <Container
       animate={animate.transition || !show}
@@ -57,7 +84,7 @@ export const Results = () => {
       onMouseMove={() => enableHover()}
     >
       <Main ref={ref}>
-        <Column pad={query ? true : options.length > 0} left>
+        <Column pad={expanded.open} left>
           <Paragraph id={ids.optionsLabel} sr-only>
             {resultsLabel}
           </Paragraph>
@@ -66,11 +93,10 @@ export const Results = () => {
             role="listbox"
             aria-labelledby={ids.optionsLabel}
           >
-            {options.map((opt, i) => (
-              <Result {...opt} key={i.toString()} />
-            ))}
+            {expanded.open &&
+              options.map((opt, i) => <Result {...opt} key={i.toString()} />)}
           </ResultsList>
-          {options.length < 1 && query && (
+          {expanded.open && query && options.length < 1 && (
             <Resultless>
               <H6
                 weight="medium"
@@ -90,7 +116,7 @@ export const Results = () => {
             </Resultless>
           )}
         </Column>
-        {showPreview && active && (
+        {expanded.open && showPreview && active && (
           <Column pad={false}>
             <Preview key={activeId} {...active} />
           </Column>
