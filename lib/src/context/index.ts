@@ -1,1 +1,1 @@
-export { useSearch, SearchProvider } from "./Search";
+export { useSearch, SearchProvider, useSearchSetter } from "./Search";

@@ -110,7 +110,8 @@ export type OptionProps = PropsWithChildren<{
   button?: Renderable | ButtonComponent;
 }>;
 
-export type SearchableOptionProps = Omit<OptionProps, "keyword"> & {
+export type Searchable = Omit<OptionProps, "keywords" | "children"> & {
   id: string;
   keywords: string[];
+  details: DetailProps[];
 };

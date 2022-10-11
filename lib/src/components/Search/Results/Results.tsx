@@ -63,7 +63,6 @@ export const Results = () => {
   useEffect(() => {
     if (custom) {
       if (!query) {
-        console.log("q: query");
         setExpanded({ options: [], open: false });
         return;
       }

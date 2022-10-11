@@ -1,7 +1,6 @@
 import NextImage from "next/image";
 
 export const Image = ({ src, alt }: { src: string; alt: string }) => {
-  console.log(`"https://searchpal.s3.us-east-2.amazonaws.com/${src}`);
   return (
     <NextImage
       src={`${

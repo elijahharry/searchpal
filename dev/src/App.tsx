@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div>
-      {/* <Search open={open} onClose={() => setOpen(false)} startExpanded>
+      <Search open={open} onClose={() => setOpen(false)} startExpanded>
         {async (query) => {
           await delay();
           if (query.includes("hello")) return;
@@ -19,8 +19,8 @@ function App() {
             </Option>
           ));
         }}
-      </Search> */}
-      <Search open={open} onClose={() => setOpen(false)}>
+      </Search>
+      {/* <Search open={open} onClose={() => setOpen(false)}>
         {users.map((user) => (
           <Option
             label={user.name}
@@ -44,7 +44,7 @@ function App() {
             )}
           </Option>
         ))}
-      </Search>
+      </Search> */}
     </div>
   );
 }

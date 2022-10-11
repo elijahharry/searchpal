@@ -19,25 +19,12 @@ import {
 } from "../../types";
 
 import { useEventListener } from "../hooks/useEventListener";
-import {
-  isString,
-  isNumber,
-  arrString,
-  search,
-  cn,
-  SearchOption,
-} from "../../utils";
+import { isString, isNumber, search, SearchOption } from "../../utils";
 import { useSearchChildren } from "../hooks/useSearchChildren";
 import { Hidden } from "./Search.styled";
 
-type Data = {
-  options: Searchable[];
-  errors: string[];
-};
-
 export interface SearchValues {
-  setData: Dispatch<SetStateAction<Data>>;
-  options: Searchable[];
+  options: Omit<Searchable, "keywords">[];
   active: string | null;
   setActive: SetActive;
   id: string;
@@ -52,11 +39,15 @@ export interface SearchValues {
   label: string;
   labels: SearchLabels;
   breakpoints: SearchBreakpoints;
-  error: string | null;
   link?: LinkComponent;
   loading: boolean;
   custom: boolean;
 }
+
+export type SearchSetter = {
+  options: Dispatch<SetStateAction<Omit<Searchable, "keywords">[]>>;
+  search: Dispatch<SetStateAction<Pick<Searchable, "keywords" | "id">[]>>;
+};
 
 type SearchIds = {
   id: string;
@@ -68,31 +59,19 @@ type SearchIds = {
   heading: string;
 };
 
-const SearchContext = createContext<SearchValues>({
-  // options: [],
-  // active: null,
-  // setActive: () => {},
-  // id: 'spotlight',
-  // query: '',
-  // setQuery: () => {},
-  // show: false,
-  // ids: {
-  //   id: 'spotlight',
-  //   search: 'search',
-  //   options: 'results',
-  //   getOptionId: () => 'option',
-  //   errors: [],
-  //   optionsLabel: 'option-label',
-  // },
-  // hoverable: false,
-  // enableHover: () => {},
-  // disableHover: () => {},
-  // suggestion: null,
-} as SearchValues);
+const SearchContext = createContext<SearchValues>({} as SearchValues);
+const SearchSetterContext = createContext<SearchSetter>({
+  options: () => {},
+  search: () => {},
+} as SearchSetter);
 
-export function useSearch() {
+export const useSearch = () => {
   return useContext(SearchContext);
-}
+};
+
+export const useSearchSetter = () => {
+  return useContext(SearchSetterContext);
+};
 
 export function SearchProvider({
   children,
@@ -116,41 +95,41 @@ export function SearchProvider({
 
   const [elements, custom, loading] = useSearchChildren(input, query);
 
-  const [{ options, errors }, setData] = useState<Data>({
-    options: [],
-    errors: [],
-  });
+  const [options, setOptions] = useState<Omit<Searchable, "keywords">[]>([]);
+  const [searchOptions, setSearchOptions] = useState<
+    Pick<Searchable, "keywords" | "id">[]
+  >([]);
 
-  const results = useMemo(() => {
-    if (custom) {
-      if (!query) return [];
-      return options.slice(0, 10);
-    }
+  const searchResults = useMemo(() => {
     if (!query) {
       if (startExpanded) {
-        return options.slice(0, 10);
+        return searchOptions.slice(0, 10);
       }
       return [];
     }
-
     const ids = search(
         query,
-        options.map(
-          (option) =>
-            new SearchOption(
-              option.id,
-              arrString(option?.keywords, option?.label)
-            )
+        searchOptions.map(
+          (option) => new SearchOption(option.id, option.keywords)
         ),
         algo
       ),
       index = (id: string) => ids.results.indexOf(id),
-      searchResults = options
+      searchResults = searchOptions
         .filter((option) => ids.results.includes(option.id))
         .sort((a, b) => index(a.id) - index(b.id));
 
     return searchResults.slice(0, 10);
-  }, [query, options, algo, startExpanded, custom]);
+  }, [query, searchOptions, algo, startExpanded]);
+
+  const results = useMemo(() => {
+    if (custom) return options.slice(0, 10);
+    const ids = searchResults.map(({ id }) => id);
+    if (!ids.length) return [];
+    return options
+      .filter((opt) => ids.includes(opt.id))
+      .sort((a) => ids.indexOf(a.id));
+  }, [custom, options, searchResults]);
 
   const [active, setActive] = useState<string | null>(null);
 
@@ -313,45 +292,41 @@ export function SearchProvider({
     };
   }, [reqLabels]);
 
+  const setters = useMemo(
+    () => ({ search: setSearchOptions, options: setOptions }),
+    [setSearchOptions, setOptions]
+  );
+
   return (
-    <SearchContext.Provider
-      value={{
-        active,
-        setActive,
-        id,
-        query,
-        setQuery,
-        show,
-        ids,
-        suggestion,
-        hoverable: hoverSelectable,
-        enableHover: enableHoverSelect,
-        disableHover: disableHoverSelect,
-        labels,
-        label: isString(searchLabel) ? searchLabel : "Search for anything...",
-        link,
-        breakpoints: {
-          preview: previewBreakpoint,
-        },
-        error:
-          errors.length > 0
-            ? cn(
-                "Encountered",
-                errors.length,
-                `option${
-                  errors.length > 1 ? "s" : ""
-                } with errors during processing. Check console for the details.`
-              )
-            : "",
-        options: results,
-        setData,
-        loading,
-        custom,
-      }}
-    >
-      <Hidden>{elements}</Hidden>
-      {children}
-    </SearchContext.Provider>
+    <SearchSetterContext.Provider value={setters}>
+      <SearchContext.Provider
+        value={{
+          active,
+          setActive,
+          id,
+          query,
+          setQuery,
+          show,
+          ids,
+          suggestion,
+          hoverable: hoverSelectable,
+          enableHover: enableHoverSelect,
+          disableHover: disableHoverSelect,
+          labels,
+          label: isString(searchLabel) ? searchLabel : "Search for anything...",
+          link,
+          breakpoints: {
+            preview: previewBreakpoint,
+          },
+          options: results,
+          loading,
+          custom,
+        }}
+      >
+        <Hidden>{elements}</Hidden>
+        {children}
+      </SearchContext.Provider>
+    </SearchSetterContext.Provider>
   );
 }
 

@@ -17,8 +17,6 @@ import {
   Modal,
 } from "./Search.styled";
 
-import { Error } from "./Error/Error";
-
 export const Search = ({
   palette,
   dark = "user",
@@ -62,10 +60,7 @@ export const Search = ({
                   animate={animate}
                 >
                   <Field />
-                  <Results
-                  // key={`results-${render}`}
-                  />
-                  <Error />
+                  <Results />
                 </Modal>
               </ModalContainer>
             </Container>
