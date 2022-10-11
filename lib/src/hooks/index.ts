@@ -2,7 +2,6 @@ export * from "./useAnimatedRender";
 export * from "./useEventListener";
 export * from "./useIsomorphicLayoutEffect";
 export * from "./useOnClickOutside";
-export * from "./useRefreshLimiter";
 export * from "./useScreenSize";
 export * from "./useFocus";
 export * from "./useDarkMode";

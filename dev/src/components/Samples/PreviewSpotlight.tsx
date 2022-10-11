@@ -1,5 +1,4 @@
 import { Search, Option, PreviewComponent, Detail } from "@searchpal/dev";
-import { Avatars } from "../Avatars";
 import { users } from "../../constants/users";
 
 export const PreviewSpotlight = ({}) => {
@@ -35,7 +34,6 @@ export const PreviewSpotlight = ({}) => {
 };
 
 const Preview: PreviewComponent = ({ img, media, label, sublabel }) => {
-  // console.log({ sublabel });
   return (
     <div
       style={{

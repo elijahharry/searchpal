@@ -16,7 +16,7 @@ export const Result = ({
   href,
   id,
   arrow: CustomArrow,
-}: Searchable) => {
+}: Omit<Searchable, "keywords">) => {
   const { ids, hoverable, active, setActive } = useSearch();
   const { showPreview } = useScreenSize();
   const isActive = useMemo(() => active === id, [id, active]),
