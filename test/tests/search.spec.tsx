@@ -155,46 +155,6 @@ export const FilterSearch = ({
   );
 };
 
-export const QueryHookSearch = ({
-  children,
-  options,
-  inputId,
-  initialQuery,
-  debounce,
-  defaultOptions,
-  ...props
-}: SearchSpecProps<{
-  debounce?: number;
-  options: SearchOption[];
-  inputId?: string;
-  initialQuery?: string;
-  children?: React.ReactNode;
-  defaultOptions?: SearchOption[];
-}>) => {
-  const { results, inputProps } = useQuery(
-    (query) => searchOptions(options, query),
-    {
-      initialQuery,
-      debounce: debounce || 300,
-      initialResults: defaultOptions,
-    }
-  );
-
-  return (
-    <Search {...props}>
-      <Input id={inputId} {...inputProps} />
-      <Results>
-        {results.map((option) => (
-          <Option id={option.id} key={option.id} data={option}>
-            {option.label}
-          </Option>
-        ))}
-      </Results>
-      {children}
-    </Search>
-  );
-};
-
 export const ConsumerSearch = ({
   children,
   consumerId,
