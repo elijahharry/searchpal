@@ -1,5 +1,25 @@
-node_modules/
-dist/
-build/
+# node
+node_modules
+npm-debug.log*
 
-**/.DS_Store
+# outputs
+.next
+dist
+build
+
+# system files
+.DS_Store
+*.pem
+
+# cache directories
+.turbo
+.cache
+
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# env
+.env
+.env.local

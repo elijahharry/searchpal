@@ -1,0 +1,17 @@
+{
+  "name": "searchpal-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "rm -rf ./playwright/.cache && playwright test -c playwright.config.ts"
+  },
+  "author": "Elijah Harry",
+  "license": "ISC",
+  "devDependencies": {
+    "searchpal-lib": "*",
+    "@faker-js/faker": "^9.2.0",
+    "@playwright/experimental-ct-react": "^1.48.2",
+    "@types/node": "^22.8.1"
+  }
+}

@@ -1,48 +1,47 @@
 {
   "name": "searchpal",
-  "version": "2.1.2",
-  "description": "Search 'palette' component for React, loosely based on MacOS Spotlight Search. Styled to look great out-of-box - pass through your own theme & elements. Autocomplete, search previews & more. Set to find exact and/or fuzzy matches.",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "version": "3.0.0",
+  "private": true,
+  "description": "Build a search palette in React.",
+  "author": {
+    "name": "Elijah Harry",
+    "url": "https://elijahharry.com"
+  },
+  "homepage": "https://searchpal.elijahharry.com",
   "repository": {
     "type": "git",
     "url": "https://github.com/elijahharry/searchpal"
   },
-  "homepage": "https://searchpal.elijahharry.com",
   "keywords": [
     "spotlight",
     "search",
     "palette",
-    "component",
     "react",
     "modal",
-    "search bar",
-    "bar",
-    "match",
-    "fuzzy",
-    "find"
+    "search bar"
   ],
-  "author": "Elijah Harry <elijah@elijahharry.com> (https://elijahharry.com)",
-  "license": "ISC",
-  "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0",
-    "styled-components": ">=4.0.0"
-  },
+  "license": "MIT",
   "scripts": {
-    "dev": "npm start -w sandbox",
-    "build": "npm run build -w lib",
-    "rebuild": "npm run watch -w lib",
-    "demo": "npm run dev -w demo",
-    "demo build": "npm run build -w demo"
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "build:lib": "turbo build --filter=searchpal-lib",
+    "serve": "npm run build && npm run start -w searchpal-demo",
+    "test": "turbo test --filter=searchpal-test",
+    "clean": "rm -rf $(find . -name 'package-lock.json' -o -name 'node_modules')",
+    "refresh": "npm run clean && npm install"
   },
   "workspaces": [
     "lib",
-    "dev",
-    "demo"
-  ]
+    "demo",
+    "test"
+  ],
+  "devDependencies": {
+    "@types/node": "^22.8.1",
+    "amenities": "^1.1.1",
+    "bundle-require": "^5.0.0",
+    "nanoid": "^5.0.8",
+    "prettier": "^3.3.3",
+    "turbo": "^2.2.3"
+  },
+  "packageManager": "npm@10.9.0"
 }
