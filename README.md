@@ -26,9 +26,9 @@ See a [live demo](https://searchpal.elijahharry.com/) :point_left:
 
 ## Usage
 
-The components in this library follow a modular design pattern to provide you with control over appearance and functionality. Import the components you need, then combine them with your own to create a custom search experience. The only components exported by this library that you must use are `Search`/`Root` and `Option`, although I'd recommend utilizing a [few others](#components) to ensure proper accessibility and functionality.
+The components in this library follow a modular design pattern. Import the ones you need, then combine them with your own to create a custom search experience. The only components exported by this library that you must use are `Search`/`Root` and `Option`, although I'd recommend utilizing a [few others](#components) to ensure proper accessibility and functionality.
 
-Some default styles are included, enough to make the components presentable out of box. They can be easily extended or overriden: every component that render an element can be passed custom classes, styles and attributes.
+Some default styles are included, enough to make the components presentable out of box. They can be easily extended or overriden: every component that renders an element can be passed custom classes, styles and attributes.
 
 Here's an example of a custom search palette built in a [Next.js](https://nextjs.org/) application with [tailwindcss](https://tailwindcss.com/):
 
@@ -88,7 +88,6 @@ export function SearchModal({ initialOptions }) {
                 placeholder="Search for something..."
               />
             </div>
-            {}
             <div className="flex">
               <Search.Results className="basis-1/2 flex-1">
                 {items.map((option) => (
@@ -180,7 +179,7 @@ The most essential components exported by this package are:
 | `Results`        | Renders a `div` with the role of `listbox`. Should contain all `Option` components; however, they do not need to be direct descendents.                            |
 | `Option`         | Represents a selectable search result. Optionally provide a contextual object through the `data` prop. You can access an option's `data` in callbacks and context. |
 
-There are also some supplementary components, these are not required but included for convenience:
+There are also some supplementary components, these are primarily included for convenience:
 
 | Name        | Description                                                                                                                                                                          |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
