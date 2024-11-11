@@ -195,4 +195,3 @@ There are also some supplementary components, these are primarily included for c
 | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | `useSearch` | Provides access to the root search state and methods. Can be used to open/close the search modal, select an option, access all options, etc. |
 | `useQuery`  | Basic data-fetching hook specifically designed for usage within search palettes. [Read more](#query-management)                              |
-|             |

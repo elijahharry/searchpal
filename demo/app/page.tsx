@@ -14,7 +14,7 @@ export default async function Home() {
   }[] = [
     {
       label: "Basic Search",
-      description: "Displays search results in basic list.",
+      description: "Displays search results in a list.",
       initial: await getPrimates(""),
       demo: OptionSearch,
       source: "demos/OptionSearch.tsx",
