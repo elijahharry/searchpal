@@ -2,7 +2,6 @@ const revealScrolled = (
   target: HTMLElement,
   maxParent?: HTMLElement | null
 ) => {
-  //   let [parent, rect] = [target.parentElement, target.getBoundingClientRect()];
   let parent = target.parentElement;
   while (parent) {
     if (parent.scrollHeight > parent.clientHeight) {

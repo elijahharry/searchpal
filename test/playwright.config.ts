@@ -21,9 +21,6 @@ export default defineConfig({
     trace: "on-first-retry",
     ctPort: 3100,
   },
-  build: {
-    // external: ["**/*utils"],
-  },
   projects: [
     {
       name: "chromium",

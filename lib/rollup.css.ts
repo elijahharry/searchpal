@@ -47,11 +47,8 @@ const processCSS = memoize(async (css: string) => {
         postcssPlugin: "postcss-apply",
         Once(root) {
           root.walkAtRules("apply", (rule) => {
-            // find all @applies classes...
             let classes = rule.params.toString().replace(/\s/g, " ").split(" ");
             classes.forEach((selector) => {
-              // get all array of Declarations for @apply selector
-
               const classSelector = `.${selector}`,
                 root = rule.root();
 
@@ -75,8 +72,6 @@ const processCSS = memoize(async (css: string) => {
                 });
               });
             });
-
-            // remove all @apply rule
             rule.remove();
           });
         },
@@ -125,7 +120,6 @@ export function css({
 } = {}): Plugin {
   const cssFile = /\.css$/;
 
-  // const styleSheets: {}
   let styleSheets: Record<string, string> = {};
   const idCounts: Record<string, number> = {};
   const getStyleSheetId = memoize((id: string) => {
@@ -143,7 +137,6 @@ export function css({
     async transform(code, id) {
       if (!cssFile.test(id)) return null;
 
-      // This is where you would add your CSS transformation logic
       const { styleSheet, classes } = await processCSS(code);
 
       const transformedCode = [
@@ -154,7 +147,7 @@ export function css({
       styleSheets[getStyleSheetId(id)] = styleSheet;
 
       return {
-        code: transformedCode, // The transformed code
+        code: transformedCode,
         map: null,
       };
     },

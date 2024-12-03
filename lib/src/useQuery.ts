@@ -16,7 +16,6 @@ interface QueryOptions<I = any> {
   debounce?: Debounce;
   format?(query: string): string;
   initialItems?: I[];
-  // initialQuery?: string;
 }
 
 interface QueryInputProps {
@@ -132,7 +131,7 @@ const useQuery = <Item>(
       cancelled.current = true;
       cancelDebounce();
     };
-    // The 'empty' dependency is purposefully omitted. The methods it calls are persistent.
+    // The 'empty' dependency is intentionally omitted. The methods it calls are persistent.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [term]);
 

@@ -134,9 +134,6 @@ export default defineConfig(({ watch, configDev }) => {
     }),
   } satisfies RollupOptions;
 
-  // const typesOutputName =
-  //   "types-" + Math.random().toString(36).slice(2) + Date.now() + ".d.ts";
-
   const dtsEntry = path.resolve(process.cwd(), "dist/index.d.ts");
 
   const types: RollupOptions | false = !isWatching && {
@@ -146,9 +143,6 @@ export default defineConfig(({ watch, configDev }) => {
       format: "es",
     },
     plugins: [
-      {
-        name: "",
-      },
       dts({}),
       del({ targets: "dist/types", hook: "generateBundle", runOnce: true }),
       {

@@ -31,7 +31,6 @@ const fuse = new Fuse(primates, {
     key("species", 0.8),
     key("genera", 0.75),
     key("family", 0.5),
-    // key("description", 0.2),
     key("location.place", 0.25),
     key("location.country", 0.25),
   ],

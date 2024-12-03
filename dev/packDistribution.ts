@@ -10,7 +10,6 @@ const packDistribution = (outputDir: string) => {
 
   if (!existsSync(dist)) makeDistribution();
 
-  // Package into a tarball
   let res = spawnSync("npm", ["pack", "--quiet"], {
     cwd: dist,
     shell: true,

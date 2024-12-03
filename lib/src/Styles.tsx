@@ -40,8 +40,6 @@ const Styles = createContext<Styles>({ cx: () => void 0 });
 
 const getClass = (name: string) => {
   if (process.env.TARGET === "development") {
-    // Throw an error if the task is not found
-    // in watch/development mode
     if (!(name in classes)) {
       throw new Error(`Class "${name}" not found.`);
     }

@@ -1,4 +1,3 @@
-// import { Search, Portal, Trigger } from "searchpal";
 import { Search } from "./search.spec";
 
 export const TriggerAttributeSpec = ({

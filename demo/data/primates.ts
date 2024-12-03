@@ -19,8 +19,6 @@ const Status = ["ce", "e", "v", "lc"] as const;
 
 export type Status = (typeof Status)[number];
 
-// export const s
-
 type BasePrimate = Classification & {
   name: string;
   wiki: string;

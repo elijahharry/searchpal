@@ -43,8 +43,6 @@ function validateTypeExports(contents: string) {
     const name = type[1];
     if (exportNames.has(name)) return;
 
-    // A type doesn't need to be exported if it's only used by an
-    // interface that extends it.
     const refs = Array.from(
       contents
         .slice(index)

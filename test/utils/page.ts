@@ -98,7 +98,5 @@ const listen = (page: Page, target: "log" | "error" | "info") => {
   return { next, capture, expect: contains };
 };
 
-// const logs = ()
-
 export { find, findAll, html, listen };
 export type { ElementHandle, Page };

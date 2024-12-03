@@ -18,9 +18,6 @@ const config: Config = {
       },
     },
   },
-  // corePlugins: {
-  //   preflight: false,
-  // },
   plugins: [
     scopedPreflightStyles({
       isolationStrategy: isolateInsideOfContainer(".preflight", {

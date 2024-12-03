@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/experimental-ct-react";
 import { QuerySpec, QuerySpecProps, Option, QueryState } from "./query.spec";
 import { ElementHandle, makeOptions, Page, retry, withTrace } from "../utils";
-import { isFunction, isNumber, keys, pick } from "amenities";
+import { isFunction, keys, pick } from "amenities";
 
 type CompareQuery = Partial<QueryState>;
 type GetQuery = () => Promise<QueryState>;
@@ -26,7 +26,6 @@ function queries<P extends QuerySpecProps>(
     input: ElementHandle<HTMLInputElement>;
     page: Page;
     wait(ms: number): Promise<void>;
-    // Callbacks tied to buttons
     reset(): Promise<void>;
     /** Will throw an error the next time the search function is called */
     throwNext(): Promise<void>;

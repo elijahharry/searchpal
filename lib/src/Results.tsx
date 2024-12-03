@@ -34,7 +34,6 @@ const Results = forward.div<ResultsOptions>(
       className: cx(
         { className, noStyle },
         !hasOptions && !noHide && { force: "srOnly" }
-        // !(hasOptions || noHide) && { force: "srOnly" }
       ),
       ...ariaLabel(props, "Search results"),
     };
