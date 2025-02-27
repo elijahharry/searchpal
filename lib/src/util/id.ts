@@ -1,4 +1,4 @@
-import { memoize } from "amenities";
+import { memoize } from "hoolock";
 
 const randomId = /* @__PURE__ */ (() => {
   const chars = (value: string) => value.split("");

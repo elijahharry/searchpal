@@ -1,7 +1,7 @@
 import path from "path";
 import fs from "fs";
 import { resolveRoot, rootdir } from "./rootdir";
-import { forEntries } from "amenities";
+import { forEntries } from "hoolock";
 import { readPackageJson } from "./fs";
 
 const distFiles = {

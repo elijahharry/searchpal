@@ -1,4 +1,4 @@
-import { isStrictEqual } from "amenities";
+import { isStrictEqual } from "hoolock";
 
 function compare<T>(
   a: T[],

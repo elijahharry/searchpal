@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import "./globals.css";
 import { Inter } from "next/font/google";
 import { name, description } from "./package";
+import { cx } from "@/util/cx";
+import "./globals.css";
 
 const font = Inter({
   subsets: ["latin"],
@@ -20,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${font.className} antialiased preflight`}>
+      <body className={cx(font.className, "antialiased preflight")}>
         {children}
       </body>
     </html>

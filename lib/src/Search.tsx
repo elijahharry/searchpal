@@ -8,7 +8,7 @@ import {
   Provider,
   useEffect,
 } from "react";
-import { isDefined, isFunction } from "amenities";
+import { isDefined, isFunction } from "hoolock";
 import { useMounted } from "./util/useMounted";
 import { error } from "./util/notice";
 import { ColorScheme, StylesProvider, WithStyle } from "./Styles";

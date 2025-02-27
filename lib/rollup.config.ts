@@ -12,7 +12,7 @@ import cleanup from "rollup-plugin-cleanup";
 import dts from "rollup-plugin-dts";
 
 import { css } from "./rollup.css";
-import { entries, get, isFunction, isString } from "amenities";
+import { entries, get, isFunction, isString } from "hoolock";
 import { validateTypeExports } from "./rollup.dts";
 
 import { bundleRequire } from "bundle-require";

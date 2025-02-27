@@ -1,7 +1,7 @@
 import { createPortal } from "react-dom";
 import { forward, ForwardProps } from "./util/forward";
 import { ReactNode } from "react";
-import { isFunction } from "amenities";
+import { isFunction } from "hoolock";
 import { Search, useSearch } from "./Search";
 import { useStyles, WithStyle } from "./Styles";
 import { useSearchIdNode } from "./util/useSearchNode";

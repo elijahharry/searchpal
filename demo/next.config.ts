@@ -1,10 +1,11 @@
 import { mkdirSync, rmSync } from "fs";
 import type { NextConfig } from "next";
 import path from "path";
-import { memoize } from "amenities";
+import { memoize } from "hoolock";
 import { packDistribution } from "../dev/packDistribution";
 import { spawnSync } from "child_process";
 import { nanoid } from "nanoid";
+import { cdn } from "./data/cdn";
 
 const prepareDistribution = memoize(() => {
   const cache = path.resolve(__dirname, ".cache");
@@ -26,7 +27,7 @@ const prepareDistribution = memoize(() => {
   return path.join(outputDirname, "package");
 });
 
-const CDN = new URL(process.env.CDN_URL!);
+const CDN = new URL(cdn.url);
 
 const nextConfig: NextConfig = {
   images: {

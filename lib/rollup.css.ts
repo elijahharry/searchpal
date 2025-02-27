@@ -1,4 +1,4 @@
-import { entries, memoize, remap } from "amenities";
+import { entries, memoize, remap } from "hoolock";
 import json5 from "json5";
 import prettier from "prettier";
 

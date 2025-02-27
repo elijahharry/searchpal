@@ -3,7 +3,7 @@ import Fuse from "fuse.js";
 import { primates } from "./primates";
 import { Classification, Primate } from "./primates";
 
-import { capitalize, get } from "amenities";
+import { capitalize, get } from "hoolock";
 
 export type PrimateGroupLevel = keyof Classification;
 

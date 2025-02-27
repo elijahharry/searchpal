@@ -7,7 +7,7 @@ import {
   useCallback,
 } from "react";
 import { debug } from "./util/notice";
-import { isFunction } from "amenities";
+import { isFunction } from "hoolock";
 import { useSearch, useSearchMethods } from "./Search";
 import { useMergeCallbacks } from "./util/useMergeCallbacks";
 

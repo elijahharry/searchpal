@@ -2,7 +2,7 @@ import { useEffect, SyntheticEvent, useCallback } from "react";
 import { warn } from "./util/notice";
 import { forward, ForwardProps } from "./util/forward";
 import { useId } from "./util/useId";
-import { isMatch, isString } from "amenities";
+import { isMatch, isString } from "hoolock";
 import { useSearchMethods, useSelectedId } from "./Search";
 import { useDeepMemo } from "./util/useDeepMemo";
 import { useMergeCallbacks } from "./util/useMergeCallbacks";

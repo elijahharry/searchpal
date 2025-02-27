@@ -1,4 +1,4 @@
-import { isNumber } from "amenities";
+import { isNumber } from "hoolock";
 import { assertContains } from "./assertContains";
 
 const rms = /s$/;

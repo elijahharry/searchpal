@@ -11,7 +11,7 @@
   "devDependencies": {
     "searchpal-lib": "*",
     "@faker-js/faker": "^9.2.0",
-    "@playwright/experimental-ct-react": "^1.48.2",
+    "@playwright/experimental-ct-react": "^1.50.1",
     "@types/node": "^22.8.1"
   }
 }

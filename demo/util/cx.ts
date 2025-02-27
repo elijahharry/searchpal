@@ -1,4 +1,4 @@
-import { classes } from "amenities";
+import { classes } from "hoolock";
 
 const cx = (...classNames: any[]) => classes(classNames);
 

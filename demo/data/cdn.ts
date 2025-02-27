@@ -1,8 +1,7 @@
-import { join } from "amenities";
+import { join } from "hoolock";
 
 const cdn = /* @__PURE__ */ (() => {
-  const url = process.env.CDN_URL;
-  if (!url) throw new Error("CDN_URL is not defined");
+  const url = "https://cdn.elijahharry.com";
   const cleanSlash = /\/\/+/g;
   const path = (...paths: string[]) =>
     url + ("/" + join(paths, "/")).replace(cleanSlash, "/");

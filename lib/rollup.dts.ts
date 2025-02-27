@@ -1,4 +1,4 @@
-import { regex } from "amenities";
+import { regex } from "hoolock";
 
 function ansi(codes: number[], str: string) {
   const prefix = codes.map((code) => `\x1b[${code}m`).join("");
