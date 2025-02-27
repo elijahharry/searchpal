@@ -1,4 +1,4 @@
-import { forEntries } from "amenities";
+import { forEntries } from "hoolock";
 import { Reducer, useReducer } from "react";
 import { sortByDocumentPosition } from "./util/sortByDocumentPosition";
 import type { Option } from "./Option";

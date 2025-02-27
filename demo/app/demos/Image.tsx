@@ -1,4 +1,4 @@
-import { isObject } from "amenities";
+import { isObject } from "hoolock";
 import NextImage, { StaticImageData } from "next/image";
 
 const Image = ({

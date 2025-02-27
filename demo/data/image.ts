@@ -1,4 +1,4 @@
-import { isNumber, memoize } from "amenities";
+import { isNumber, memoize } from "hoolock";
 import { StaticImageData } from "next/image";
 import sharp from "sharp";
 

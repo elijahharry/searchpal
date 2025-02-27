@@ -1,4 +1,4 @@
-import { isError } from "amenities";
+import { isError } from "hoolock";
 
 const trace = async <R>(fn: () => R, caller: Function) => {
   try {

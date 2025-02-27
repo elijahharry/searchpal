@@ -1,4 +1,4 @@
-import { isString } from "amenities";
+import { isString } from "hoolock";
 import { useMemo, useRef } from "react";
 import { randomId, safeId } from "./id";
 import { noop } from "./noop";

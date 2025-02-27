@@ -29,7 +29,7 @@ export default async function Home() {
   ];
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center">
+    <main className="flex flex-col items-center justify-center h-full min-h-dvh">
       <h1 className="text-3xl font-bold text-center">{name}</h1>
       <p className="max-w-[300px] text-center mt-1 text-gray-500 dark:text-gray-300">
         {description}

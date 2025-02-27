@@ -1,4 +1,4 @@
-import { isPlainObject, isString, memoize } from "amenities";
+import { isPlainObject, isString, memoize } from "hoolock";
 import {
   createContext,
   ReactNode,

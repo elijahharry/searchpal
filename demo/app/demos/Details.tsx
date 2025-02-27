@@ -1,6 +1,6 @@
 import { cx } from "@/util/cx";
 import type { Primate, Status } from "@data/primates";
-import { capitalize, memoize } from "amenities";
+import { capitalize, memoize } from "hoolock";
 import { Avatar } from "./Image";
 
 type StatusMap<T> = Record<Status, T>;

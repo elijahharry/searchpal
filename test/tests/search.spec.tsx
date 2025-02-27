@@ -23,7 +23,7 @@ import {
   isString,
   memoize,
   regex,
-} from "amenities";
+} from "hoolock";
 
 export type SearchSpecProps<P = {}> = {
   initialOpen?: boolean;

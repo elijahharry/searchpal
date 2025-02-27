@@ -1,4 +1,4 @@
-import { isFunction } from "amenities";
+import { isFunction } from "hoolock";
 import { name } from "../../../package.json";
 
 const params = /%s/g;

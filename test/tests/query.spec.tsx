@@ -9,7 +9,7 @@ import {
   isPlainObject,
   omit,
   pick,
-} from "amenities";
+} from "hoolock";
 
 const search = (options: Option[], term: string) =>
   options.filter((option) => option.label.includes(term));

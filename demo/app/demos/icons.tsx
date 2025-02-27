@@ -1,4 +1,4 @@
-import { classes } from "amenities";
+import { classes } from "hoolock";
 import { SVGProps as ReactSVGProps } from "react";
 
 type SVGProps = ReactSVGProps<SVGSVGElement>;

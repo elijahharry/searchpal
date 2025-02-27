@@ -8,7 +8,7 @@ import {
   useState,
 } from "react";
 import { useEncase } from "./util/useEncase";
-import { isNumber } from "amenities";
+import { isNumber } from "hoolock";
 import { noop } from "./util/noop";
 import { resolve } from "./util/resolve";
 

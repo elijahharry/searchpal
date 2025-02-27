@@ -1,4 +1,4 @@
-import { isString } from "amenities";
+import { isString } from "hoolock";
 import { forward, ForwardProps } from "./util/forward";
 import { useStyles, WithStyle } from "./Styles";
 import { useSearch } from "./Search";

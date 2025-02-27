@@ -1,5 +1,5 @@
 import { ElementHandle, Page } from "playwright";
-import { forEntries, isArray, isObject, isString } from "amenities";
+import { forEntries, isArray, isObject, isString } from "hoolock";
 import { expect } from "@playwright/experimental-ct-react";
 
 export type Portal = ElementHandle<HTMLDivElement>;

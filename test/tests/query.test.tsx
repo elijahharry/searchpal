@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/experimental-ct-react";
 import { QuerySpec, QuerySpecProps, Option, QueryState } from "./query.spec";
 import { ElementHandle, makeOptions, Page, retry, withTrace } from "../utils";
-import { isFunction, keys, pick } from "amenities";
+import { isFunction, keys, pick } from "hoolock";
 
 type CompareQuery = Partial<QueryState>;
 type GetQuery = () => Promise<QueryState>;

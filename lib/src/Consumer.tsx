@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { Search, useSearch } from "./Search";
-import { isFunction } from "amenities";
+import { isFunction } from "hoolock";
 
 function Consumer<Data = any>({
   children,
